@@ -1,0 +1,50 @@
+server:
+  #设置程序启动端口号
+  port: 7000
+  servlet:
+      context-path: /web
+
+spring:
+  aop:
+  #开启aop代理
+    auto: true
+    proxy-target-class: true
+  datasource:
+     driver-class-name: com.mysql.jdbc.Driver
+     username: root
+     password: 123456
+     url: jdbc:mysql://127.0.0.1:3307/example?characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useSSL=false
+     type: com.alibaba.druid.pool.DruidDataSource
+     druid:
+       # 初始连接数
+       initial-size: 5
+       # 最大激活数
+       max-active: 50
+       # 最大等待时间
+       max-wait: 3000
+       # 是否启用非公平锁
+       use-unfair-lock: true
+       # mysql 用 false | oracle 用 true
+       pool-prepared-statements: false
+  mvc:
+      view:
+        prefix: /jsp/
+        suffix: .jsp
+
+
+nutz:
+  json:
+    auto-unicode: false
+    quote-name: true
+    ignore-null: true
+    null-as-emtry: true
+    enabled: true
+    mode: compact
+  dao:
+    runtime:
+      create: false #自动创建表
+      migration: false #根据bena自动更新表结构
+      basepackage: com.efraiser.test.db.model  #扫描bean
+    sqlmanager:
+      paths:
+        - sqls  #sql文件存放位置
