@@ -10,7 +10,7 @@ import java.util.List;
  * @Description
  * @Date 2018/7/20 16:23
  */
-@Table("xslde_user")//批量见表时候，扫描到该注解会创建一个表名称为”s_user“的表
+//@Table("xslde_user")//批量见表时候，扫描到该注解会创建一个表名称为”s_user“的表
 public class User implements Serializable {
 
     @Id

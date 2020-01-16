@@ -12,9 +12,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
 
-        <module>auth</module>
         <module>service_dao</module>
         <module>project</module>
+        <module>common</module>
     </modules>
 
     <parent>
@@ -28,5 +28,20 @@
         <beetl.version>1.1.55.RELEASE</beetl.version>
         <shiro.version>1.4.0</shiro.version>
     </properties>
+
+
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/repositories/central/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 </project>

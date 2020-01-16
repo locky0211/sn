@@ -2,7 +2,7 @@ package com.efraiser.test.project.actiion;
 
 
 import com.efraiser.test.db.model.User;
-import com.efraiser.test.db.service.UserService;
+import com.efraiser.test.db.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/test")
 public class TestAction {
 
-    @Autowired
+   // @Autowired
     private UserService userService;
 
     public UserService getUserService() {

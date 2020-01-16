@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Created by xslde on 2018/7/23
  */
-@Table("xslde_permission")
+//@Table("xslde_permission")
 public class Permission implements Serializable {
     @Id
     private Integer id;

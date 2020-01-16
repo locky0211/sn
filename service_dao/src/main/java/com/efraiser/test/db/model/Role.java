@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by xslde on 2018/7/23
  */
-@Table("xslde_role")
+//@Table("xslde_role")
 public class Role implements Serializable {
 
     @Id

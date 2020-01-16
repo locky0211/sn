@@ -4,16 +4,21 @@ server:
   servlet:
       context-path: /web
 
+
+
+
+
+
 spring:
   aop:
   #开启aop代理
     auto: true
     proxy-target-class: true
   datasource:
-     driver-class-name: com.mysql.jdbc.Driver
-     username: root
+     driver-class-name: com.ibm.db2.jcc.DB2Driver
+     username: sam
      password: 123456
-     url: jdbc:mysql://127.0.0.1:3307/example?characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useSSL=false
+     url: jdbc:db2://192.168.41.151:50000/sam
      type: com.alibaba.druid.pool.DruidDataSource
      druid:
        # 初始连接数
@@ -28,8 +33,14 @@ spring:
        pool-prepared-statements: false
   mvc:
       view:
-        prefix: /jsp/
+      #  prefix: /jsp/
+        prefix: /
         suffix: .jsp
+      pathmatch:
+        use-suffix-pattern: false
+        use-registered-suffix-pattern: true
+      contentnegotiation:
+        favor-path-extension: false
 
 
 nutz:
@@ -48,3 +59,19 @@ nutz:
     sqlmanager:
       paths:
         - sqls  #sql文件存放位置
+
+mine:
+  properties:
+    updateEnabled: false
+    loginImg1: images/login/top-39.gif
+    loginImg2: url(images/login/bg_main_exam.gif) no-repeat
+    mainImg: images/cbrc.png
+    dateFormat: 1
+    eastScoreShow: 2  #省局east打分展示 1 表示展示
+    mainJsp: main
+    systemBrNo:
+
+
+
+
+
