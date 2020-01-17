@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<title>A very basic Superfish menu example</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<link rel="stylesheet" type="text/css" href="jquerycssmenu.css" />
+
+<!--[if lte IE 7]>
+<style type="text/css">
+html .jquerycssmenu{height: 1%;} /*Holly Hack for IE7 and below*/
+</style>
+<![endif]-->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script type="text/javascript" src="jquerycssmenu.js"></script>
+</head>
+<body>
+	<div id="myjquerymenu" class="jquerycssmenu">
+		<ul>
+			<li><a href="#">系统首页</a></li>
+			<li><a href="#">合规知识库</a></li>
+			<li><a href="#">文件管理</a>
+				<ul>
+					<li><a href="#">内规管理</a></li>
+					<li><a href="#">外规管理</a></li>
+				</ul></li>
+			<li><a href="#">Item 3</a></li>
+			<li><a href="#">Folder 2</a>
+				<ul>
+					<li><a href="#">Sub Item 2.1</a></li>
+					<li><a href="#">Folder 2.1</a>
+						<ul>
+							<li><a href="#">Sub Item 2.1.1</a></li>
+							<li><a href="#">Sub Item 2.1.2</a></li>
+							<li><a href="#">Folder 3.1.1</a>
+								<ul>
+									
+								</ul></li>
+							<li><a href="#">Sub Item 2.1.4</a></li>
+						</ul></li>
+				</ul></li>
+			<li><a href="#">Item 4</a></li>
+		</ul>
+		<br style="clear: left" />
+	</div>
+	<div>
+		<iframe src="www.baidu.com"></iframe>
+	</div>
+</body>
+</html>

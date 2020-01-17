@@ -1,0 +1,24 @@
+<script type="text/javascript">
+	var base = '${base}/';
+</script> 
+<!-- jquery -->
+<script type="text/javascript" src="${base }/common/js/jquery.min.js"></script>
+<script type="text/javascript" src="${base }/common/js/base_method.js"></script>
+<script type="text/javascript" src="${base }/common/js/date.js"></script>
+<link href="${base }/common/css/table.css" rel="stylesheet" type="text/css" />
+<link href="${base }/common/css/icon2.css" rel="stylesheet" type="text/css" />
+<!-- miniui -->
+<script type="text/javascript" src="${base }/common/js/miniui/miniui.js"></script>
+<link href="${base }/common/js/miniui/themes/default/miniui.css" rel="stylesheet" type="text/css" />
+<link href="${base }/common/js/miniui/themes/icons.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+	//debugger
+	mini_debugger = false;
+	var skin = getCookie('miniuiSkin');
+	if (!skin) {
+		skin = 'blue';
+	}
+	document.write('<link href="' + base +'common/js/miniui/themes/' + skin + '/skin.css" rel="stylesheet" type="text/css" />');
+</script>
+<link href="${base }/common/css/base.css" rel="stylesheet" type="text/css" />

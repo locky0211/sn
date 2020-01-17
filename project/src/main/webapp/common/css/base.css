@@ -1,0 +1,19 @@
+html,body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+.mini-grid-cell {
+	cursor: pointer;
+}
+.no-border{
+	border: 0px;
+}

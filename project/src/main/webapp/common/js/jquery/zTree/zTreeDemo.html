@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="../jquery-1.7.2.js"></script>
+<script type="text/javascript" src="jquery.ztree3.3.js"></script>
+<title>Insert title here</title>
+<script type="text/javascript">
+	function zTreeOnDrop(event, treeId, treeNodes, targetNode, moveType) {
+		alert(treeNodes.length
+				+ ","
+				+ (targetNode ? (targetNode.tId + ", " + targetNode.name)
+						: "isRoot"));
+	};
+
+	var setting = {
+		data : {
+			simpleData : {
+				enable : true
+			},
+			key : {
+				name : "resName"
+			}
+		},
+		view : {
+			showIcon : false,
+			showLine : false
+		},
+		edit : {
+			enable : true,
+			showRemoveBtn : false,
+			showRenameBtn : false,
+			drag : {
+				prev : true,
+				next : true,
+				inner : false
+			}
+		},
+		callback : {
+			onDrop : zTreeOnDrop
+		}
+
+	};
+	var zNodes = [{
+		   "resName" :"内勤主任履职考核系统",
+		   "sortNum" :0,
+		   "id" :"8dae1b3a3aff4779859e24b0d8306336"
+		}, {
+		   "resName" :"身份证联网核查",
+		   "sortNum" :0,
+		   "id" :"d2f73e182c2a41459ed0f94f487ce58e"
+		}];
+	$(document).ready(function() {
+		$.fn.zTree.init($("#tree"), setting, zNodes);
+	});
+</script>
+<style type="text/css">
+.ztree li a:HOVER {
+	text-decoration: none;
+}
+
+.ztree li a.level0 {
+	background: url(computer2.png) no-repeat;
+	padding-left: 30px;
+	padding-top: 5px;
+	border: 0px;
+}
+</style>
+</head>
+<body>
+	<ul id="tree" class="ztree"></ul>
+</body>
+</html>

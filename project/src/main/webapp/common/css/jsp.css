@@ -1,0 +1,12 @@
+body,div {
+	background-color: #ECEADF;
+	color: black;
+}
+
+span,a {
+	color: black;
+}
+
+a:link {
+	color: black;
+}

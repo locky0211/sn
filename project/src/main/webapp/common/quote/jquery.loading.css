@@ -1,0 +1,32 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+}
+
+.background {
+	width: 100%;
+	height: 100%;
+	opacity: 0.4;
+	filter: alpha(opacity = 50);
+	background: #535353;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+
+.progressBar {
+	line-height: 29px;
+	font-weight: bold;
+	z-index: 2001;
+	position: absolute;
+	width: 300px;
+	left: 50%;
+	top: 50%;
+	margin-left: -150px;
+	margin-top: -40px;
+	text-align: center;
+	z-index: 2001;
+	background-color: transparent;
+}

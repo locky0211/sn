@@ -5,7 +5,6 @@ import com.efraiser.test.common.util.SCks;
 import com.efraiser.test.common.util.StrUtil;
 import com.efraiser.test.db.model.SysBmgl;
 import com.efraiser.test.db.model.SysUser;
-import com.efraiser.test.db.model.User;
 import com.efraiser.test.db.service.BaseServiceImpl;
 import com.efraiser.test.db.service.sysuser.SysUserService;
 import org.nutz.dao.Cnd;

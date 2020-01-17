@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-//@RequestMapping("/")
+@RequestMapping("/indexCon")
 public class IndexController {
 
 

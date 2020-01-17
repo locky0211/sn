@@ -1,0 +1,8 @@
+.errorLabel {
+	color: red;
+	font-size: 12px;
+}
+
+.errorField {
+	border: 1px solid red;
+}

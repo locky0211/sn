@@ -1,0 +1,124 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	overflow: auto;
+}
+
+.tab {
+	font-size: 12px;
+	width: 100%;
+	position: relative;
+	margin: auto;
+	table-layout: fixed;
+	border-top: 1px solid #99BBE8;
+	border-left: 1px solid #99BBE8;
+}
+
+.tab td {
+	word-wrap: break-word;
+}
+
+.tab_label {
+	background-color: #E6EFFE;
+	color: #15428B;
+	border-right: 1px solid #99BBE8;
+	border-bottom: 1px solid #99BBE8;
+}
+
+.tab_top {
+	border-top: 1px solid #99BBE8;
+}
+
+.tab_label_l {
+	background-color: #E6EFFE;
+	color: #15428B;
+	border-right: 1px solid #99BBE8;
+	border-bottom: 1px solid #99BBE8;
+	text-align: left;
+}
+
+.tab_label_c {
+	background-color: #E6EFFE;
+	color: #15428B;
+	border-right: 1px solid #99BBE8;
+	border-bottom: 1px solid #99BBE8;
+	text-align: center;
+}
+
+.tab_label_r {
+	background-color: #E6EFFE;
+	color: #15428B;
+	border-right: 1px solid #99BBE8;
+	border-bottom: 1px solid #99BBE8;
+	text-align: right;
+}
+
+.tab_label_ls {
+	background-color: #E6EFFE;
+	color: #15428B;
+	border-bottom: 1px solid #99BBE8;
+}
+
+.tab_label_ls_l {
+	background-color: #E6EFFE;
+	color: #15428B;
+	border-bottom: 1px solid #99BBE8;
+	text-align: left;
+}
+
+.tab_label_ls_c {
+	background-color: #E6EFFE;
+	color: #15428B;
+	border-bottom: 1px solid #99BBE8;
+	text-align: center;
+}
+
+.tab_label_ls_r {
+	background-color: #E6EFFE;
+	color: #15428B;
+	border-bottom: 1px solid #99BBE8;
+	text-align: right;
+}
+
+.tab_field {
+	word-wrap: break-word;
+	border-right: 1px solid #99BBE8;
+	border-bottom: 1px solid #99BBE8;
+	text-align: left;
+}
+.tab_field_c {
+	word-wrap: break-word;
+	border-right: 1px solid #99BBE8;
+	border-bottom: 1px solid #99BBE8;
+	text-align: center;
+}
+
+.tab_field_ls {
+	word-wrap: break-word;
+	border-bottom: 1px solid #99BBE8;
+	text-align: left;
+}
+
+.tab_field_ls1 {
+	border-right: 1px solid #99BBE8;
+}
+
+.input_text1 {
+	width: 250px;
+}
+
+.pTitle {
+	font-size: 20px;
+	color: #808080;
+	font-weight: bold;
+	margin-top: 20px;
+	font-family: 微软雅黑, Verdana, sans-serif, 宋体;
+	width: 100%;
+	text-align: center;
+}
+
+.btnPanel {
+	width: 100%;
+	text-align: center;
+	height: 60px;
+}

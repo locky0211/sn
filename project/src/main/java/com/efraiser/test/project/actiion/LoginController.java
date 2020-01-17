@@ -5,6 +5,7 @@ import com.efraiser.test.common.util.DateUtil;
 import com.efraiser.test.common.util.StrUtil;
 import com.efraiser.test.db.model.SysUser;
 import com.efraiser.test.db.service.jgyrecord.JgyRecordService;
+import com.efraiser.test.db.service.sysqxgl.SysQxglService;
 import com.efraiser.test.db.service.sysuser.SysUserService;
 import com.efraiser.test.db.service.sysuserloginlog.SysUserLoginLogService;
 import com.efraiser.test.project.config.LocalConfig;
@@ -13,9 +14,11 @@ import com.efraiser.test.project.util.IpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,10 +34,12 @@ import java.util.Map;
  * @author efraiser.xiaxiaofeng
  */
 @Controller
-@RequestMapping("sys/login")
 public class LoginController {
 
     private Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+    @Value("${server.servlet.context-path}")
+    private String projectName;
 
     @Autowired
     private LocalConfig localConfig;
@@ -48,12 +53,50 @@ public class LoginController {
     @Autowired
     private JgyRecordService jgyRecordService;
 
-    //private SysQxglDao sysQxglDao;
+    @Autowired
+    private SysQxglService sysQxglService;
 
     public LoginController(){
 
         System.out.println();
     }
+
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+
+
+    @RequestMapping("/loginPage")
+    public ModelAndView loginPage(HttpServletRequest request) {
+        return index(request);
+    }
+
+
+    @RequestMapping("/")
+    public ModelAndView index(HttpServletRequest request) {
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        Object user = request.getSession().getAttribute(SystemConstants.SESSION_USER);
+        if(user != null){
+            modelAndView.setViewName("main");
+        }else{
+            modelAndView.setViewName("login");
+        }
+
+
+        request.getSession().setAttribute("base", projectName);
+
+        return modelAndView;
+    }
+
+
 
 
     /**
@@ -63,7 +106,7 @@ public class LoginController {
      * @throws Exception
      */
     @RequestMapping("/doLogin")
-    public ModelAndView doLogin2(SysUser user, HttpServletRequest req) {
+    public ModelAndView doLogin(SysUser user, HttpServletRequest req) {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
@@ -268,20 +311,18 @@ public class LoginController {
 //        return new File(SystemConstants.SYSTEM_PATH + File.separator + "common" + File.separator + "非现场监管系统专用浏览器.exe");
 //    }
 //
-//    /**
-//     * 返回用户的权限对象集合
-//     *
-//     * @param req http请求对象
-//     * @return
-//     */
-//    @At
-//    @Ok("json")
-//    @Filters(@By(type = CheckSession.class, args = {"sessionUser", "/login.jsp"}))
-//    public Object initLeftTreeByUser(HttpServletRequest req) {
-//        SysUser user = (SysUser) req.getSession().getAttribute(SystemConstants.SESSION_USER);
-//        return sysQxglDao.getQxByUserId(user.getUserId());
-//        // return sysQxglDao.query(Cnd.where("flag", "=", "1"), null);
-//    }
+    /**
+     * 返回用户的权限对象集合
+     *
+     * @param req http请求对象
+     * @return
+     */
+    @RequestMapping("/initLeftTreeByUser")
+    @ResponseBody
+    public Object initLeftTreeByUser(HttpServletRequest req) {
+        SysUser user = (SysUser) req.getSession().getAttribute(SystemConstants.SESSION_USER);
+        return sysQxglService.getQxByUserId(user.getUserId());
+    }
 //
 //    @At()
 //    public View doLoginWj(HttpServletRequest req, HttpSession session) {

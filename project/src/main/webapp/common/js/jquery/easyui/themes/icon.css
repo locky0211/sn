@@ -1,0 +1,175 @@
+.icon-option {
+	background: url('icons/option.png') no-repeat;
+}
+
+.icon-unlock {
+	background: url('icons/unlock.png') no-repeat;
+}
+
+.icon-lock {
+	background: url('icons/lock.png') no-repeat;
+}
+
+.icon-import {
+	background: url('icons/import.png') no-repeat;
+}
+
+.icon-pie {
+	background: url('icons/pie.png') no-repeat;
+}
+
+.icon-user {
+	background: url('icons/user.png') no-repeat;
+}
+
+.icon-toc {
+	background: url('../zTree/img/icon/toc_open.gif') no-repeat;
+}
+
+.icon-delete {
+	background: url('icons/delete.png') no-repeat;
+}
+
+.icon-excel {
+	background: url('icons/excel.png') no-repeat;
+}
+
+.icon-word {
+	background: url('icons/word.png') no-repeat;
+}
+
+.icon-view {
+	background: url('icons/view.png') no-repeat;
+}
+
+.icon-expandall {
+	background: url('icons/expandall.gif') no-repeat;
+}
+
+.icon-collapseall {
+	background: url('icons/collapseall.png') no-repeat;
+}
+
+.icon-stop {
+	background: url('icons/stop.png') no-repeat;
+}
+
+.icon-download {
+	background: url('icons/download.png') no-repeat;
+}
+
+.icon-upload {
+	background: url('icons/upload.png') no-repeat;
+}
+
+.icon-tip {
+	background: url('icons/tip.png') no-repeat;
+}
+
+.icon-settings {
+	background: url('icons/settings.png') no-repeat;
+}
+
+.icon-consulting {
+	background: url('icons/consulting.png') no-repeat;
+}
+
+.icon-issue {
+	background: url('icons/issue.png') no-repeat;
+}
+
+.icon-email {
+	background: url('icons/email.png') no-repeat;
+}
+
+.icon-library {
+	background: url('icons/library.png') no-repeat;
+}
+
+.icon-blank {
+	background: url('icons/blank.gif') no-repeat;
+}
+
+.icon-add {
+	background: url('icons/edit_add.png') no-repeat;
+}
+
+.icon-edit {
+	background: url('icons/pencil.png') no-repeat;
+}
+
+.icon-edit2 {
+	background: url('icons/edit.png') no-repeat;
+}
+
+.icon-remove {
+	background: url('icons/edit_remove.png') no-repeat;
+}
+
+.icon-save {
+	background: url('icons/filesave.png') no-repeat;
+}
+
+.icon-cut {
+	background: url('icons/cut.png') no-repeat;
+}
+
+.icon-ok {
+	background: url('icons/ok.png') no-repeat;
+}
+
+.icon-no {
+	background: url('icons/no.png') no-repeat;
+}
+
+.icon-cancel {
+	background: url('icons/cancel.png') no-repeat;
+}
+
+.icon-reload {
+	background: url('icons/reload.png') no-repeat;
+}
+
+.icon-search {
+	background: url('icons/search.png') no-repeat;
+}
+
+.icon-print {
+	background: url('icons/print.png') no-repeat;
+}
+
+.icon-help {
+	background: url('icons/help.png') no-repeat;
+}
+
+.icon-undo {
+	background: url('icons/undo.png') no-repeat;
+}
+
+.icon-redo {
+	background: url('icons/redo.png') no-repeat;
+}
+
+.icon-back {
+	background: url('icons/back.png') no-repeat;
+}
+
+.icon-sum {
+	background: url('icons/sum.png') no-repeat;
+}
+
+.icon-tip {
+	background: url('icons/tip.png') no-repeat;
+}
+
+.icon-mini-add {
+	background: url('icons/mini_add.png') no-repeat 2px 2px;
+}
+
+.icon-mini-edit {
+	background: url('icons/mini_edit.png') no-repeat 2px 2px;
+}
+
+.icon-mini-refresh {
+	background: url('icons/mini_refresh.png') no-repeat 3px 2px;
+}

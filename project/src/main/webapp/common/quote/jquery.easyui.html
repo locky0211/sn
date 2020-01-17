@@ -1,0 +1,13 @@
+<!-- easyui-javascript -->
+<script type="text/javascript" src="${base }/common/js/jquery/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="${base }/common/js/jquery/easyui/easyui-lang-zh_CN.js"></script>
+<!-- easyui-CSS -->
+<link rel="stylesheet" href="${base }/common/js/jquery/easyui/themes/default/easyui.css" type="text/css" id="swicth-style">
+<script type="text/javascript">
+	var skin = 'default';
+	if (getCookie('cs-skin')) {
+		skin = getCookie('cs-skin');
+	}
+	$('#swicth-style').attr('href','${base }/common/js/jquery/easyui/themes/' + skin + '/easyui.css');
+</script>
+<link rel="stylesheet" href="${base }/common/js/jquery/easyui/themes/icon.css" type="text/css">
