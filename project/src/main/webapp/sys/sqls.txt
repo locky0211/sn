@@ -1,0 +1,4 @@
+[
+    { "id": "SELECT * FROM SAM.RD_TABLE_INFO;SELECT * FROM SAM.RD_TABLE_BASIC_INFO", "text": "模板" ,tag:"模板"},
+    { "id": "SELECT * FROM SAM.RD_TABLE_BASIC_INFO", "text": "模板基本信息" ,tag:"基本信息"}
+]
