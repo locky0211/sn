@@ -1,0 +1,56 @@
+body {
+	font: 12px Arial, "宋体";
+	color: #9cbfdd;
+	padding: 0;
+	margin: 0;
+	background-color: #0650A6;
+	background: url(../images/login/37633.jpg) no-repeat;
+	overflow: hidden;
+	background-size: 100% 100%;
+}
+
+#warp {
+	position: absolute;
+	width: 800px;
+	height: 500px;
+	left: 50%;
+	top: 50%;
+	margin-left: -400px;
+	margin-top: -230px;
+	text-align: center;
+}
+
+.footer {
+	color: white;
+	font-size: 11px;
+	text-align: right;
+}
+
+.errorDiv {
+	color: red;
+	margin-right: 40px;
+	font-size: 14px;
+	float: left;
+	margin-left: 250px;
+}
+
+.logintitle {
+	background: url(../images/login/top-39.png) no-repeat;
+	height: 90px;
+	margin: 0 auto;
+	border: 1px solid red;
+}
+
+.loginwrapexam {
+	margin: 0 auto;
+	width: 620px;
+	height: 315px;
+}
+
+.logininput {
+	border: #aaa 1px solid;
+	width: 342px;
+	margin-left: 202px;
+	padding: 5px;
+	font-size: 16px;
+}

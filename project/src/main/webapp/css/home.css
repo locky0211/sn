@@ -1,0 +1,9 @@
+.homeLmUL {
+	list-style-type: none;
+	margin: 0px;
+	padding: 2px;
+}
+
+.homeLmUL li {
+	margin-bottom: 2px;
+}

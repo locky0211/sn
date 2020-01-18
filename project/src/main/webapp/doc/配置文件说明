@@ -1,0 +1,72 @@
+<report title="内部账务审核" daoName="dao">
+title:报表头部功能说明
+daoName:对应NutzDao ioc容器实例名.在ds_config.xml中进行配置
+
+<tool><item id="xzyh" label="新增用户" onclick="openWin('测试用2','/sys/tree/toTreeManager','500','400')" /></tool>
+//报表头部工具功能点<a>标签
+id:标签id
+label:标签名称
+onclick:标签点击事件(report.method.js中相关方法)
+
+<form className="" style="width:100%">
+className:表单的样式名称(可在report2.css中进行样式编写) 默认:report_formClass
+style:表单的相关样式
+<formRow>
+<item label="机构码" fieldType="3" selectIndex="1" fieldClass="" fieldName="jgm" asyncUrl="/sys/organ/getOrganListByUserOrgan" valueField="organId" textField="organName"/>
+<item label="审核情况" fieldType="2" fieldName="selectss" options="0-全部;1-是;2-否" selectIndex="2" selectValue="1"/>
+<item label="开始日期" fieldType="1" fieldName="startDate" fieldTdClass="wdatePicker"  initDate="-1" initValue=""  />
+<item label="结束日期" fieldType="1" fieldName="endDate" fieldTdClass="wdatePicker"  initDate="-1" initValue=""  />
+</formRow>
+</form>
+label:label名称
+labelClass:label的class
+labelTdClass:label的单元格class
+fieldType:(1:input 2:select 3:带异步加载连接的select)
+fieldName:控件name属性
+fieldId:控件ID属性
+fieldClass:控件class
+fieldTdClass:控件单元格class
+colSpan:colSpan属性
+rowSpan:rowSpan属性
+asyncUrl:fieldType=3的时候,指定的异步加载select的地址
+valueField:指定异步加载select的json格式的value字段
+textField:指定异步加载select的json格式的text字段
+selectIndex:select默认加载选中的下标从1开始
+selectValue:select默认加载选中的值(如果同时存在selectIndex的话selectValue优先级会更高点)
+options:filedType=2的时候,手工设定的值(0-全部)则0为value,全部为text 以;隔开
+initDate:默认设置的日期 0为当前日,-1为前一天,1为明天,依此类推
+initValue:默认设置的值,仅支持fieldType=1
+	
+<table className="" pageList="20;40;50;80" pageSize="-1" style="width:100%" cellpadding="4" cellspacing="1">
+style:表格style相关
+width:表单width
+className:表单class
+cellspacing:cellspacing属性
+cellpadding:cellpadding属性
+pageSize:表格分页页数 默认:20 如果值小于0则不进行分页
+pageList:设置表格页数的选中,20;40;50以;隔开,则选中每页显示数为:20,40,50
+rowNum:是否显示序号,默认false
+<tableRow>
+<column label="机构码" />
+label:字段名称
+style:style相关设置
+rowSpan:rowSpan属性
+colSpan:colSpan属性
+</tableRow>
+</table>
+<reportSql>//sql查询语句
+<![CDATA[
+	select jgm,zh,jym,jdbs,fse,flag,remark 
+	from day_balance where 1=1 {and ( jgm=#jgm# or '1'=#jgm#)} {and jym=#jym#} {and flag=$flag$}
+	
+	{and  jgm=#jgm# [ and exists(select 1 from s_user_organs uo where uo.organ_id=t.jgm and uo.user_id=::sessionUserId::)]}
+	]]>
+#a#匹配后为'a'
+$a$匹配后为a
+@a@匹配后为'a',如果a为null匹配后为''
+{and ( jgm=#jgm# or '1'=#jgm#)}:会根据form表单中name为jgm的文本域的值进行条件组装,如果为空{}内的内容将不显示
+{[]}如果前面的参数如:#jgm#为空.则显示[]中的信息
+::sessionUserId::
+::name::获取session中的数据
+</reportSql>
+</report>

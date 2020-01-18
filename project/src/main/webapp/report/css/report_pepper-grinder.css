@@ -1,0 +1,70 @@
+@CHARSET "UTF-8";
+
+#reportToolBarDiv {
+	background-image: url("../images/x-toolbar-background.png");
+	background-repeat: repeat-x;
+	width: 100%;
+}
+
+#reportTableDiv {
+	overflow: auto;
+	width: 100%;;
+	text-align: center;
+	background-color: #ECEADF;
+	background: #eceadf url('images/ui-bg_fine-grain_10_eceadf_60x60.png')
+		repeat;
+}
+
+#reportTablePTitle {
+	font-size: 20px;
+	color: #3F3F3F;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 8px;
+	font-family: 微软雅黑, Verdana, sans-serif, 宋体;
+}
+
+.report_tableClass {
+	font-size: 12px;
+	width: 100%;
+	position: relative;
+	margin: auto;
+	table-layout: fixed;
+	border-top: 1px solid #D9D6C4;
+	border-left: 1px solid #D9D6C4;
+}
+
+.report_tableClass thead th {
+	background-color: #EFEFEF;
+	background: url('images/ui-bg_fine-grain_15_ffffff_60x60.png') repeat-x
+		50% 50%;
+	color: #3F3F3F;
+	height: 30px;
+	border-right: 1px solid #D9D6C4;
+	border-bottom: 1px solid #D9D6C4;
+}
+
+.report_table_body_tr {
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+.report_table_body_td {
+	word-wrap: break-word;
+	background: #eceadf url('images/ui-bg_fine-grain_10_eceadf_60x60.png')
+		repeat;
+	border-right: 1px solid #D9D6C4;
+	border-bottom: 1px solid #D9D6C4;
+}
+
+.report_tableClass td {
+	word-wrap: break-word;
+}
+
+.lightRow {
+	word-wrap: break-word;
+	background-color: #EEEEEE;
+	cursor: pointer;
+	border-right: 1px solid #D9D6C4;
+	border-bottom: 1px solid #D9D6C4;
+}

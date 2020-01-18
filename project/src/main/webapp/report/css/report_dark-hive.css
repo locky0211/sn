@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+
+#reportToolBarDiv {
+	background-color: #2D2D2D !important;
+	width: 100%;
+	background-repeat: repeat-x;
+	color: white;
+}
+
+#reportToolBarTable td {
+	color: white;
+}
+
+#reportFormDiv {
+	width: 100%;
+	background-color: #F8F8F8;
+}
+
+.report_formLabelTdClass {
+	color: white;
+}
+
+#reportTableDiv {
+	overflow: auto;
+	width: 100%;;
+	text-align: center;
+	background: #000 url('images/ui-bg_loop_25_000000_21x21.png') repeat;
+}
+
+#reportTablePTitle {
+	font-size: 20px;
+	color: #808080;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 8px;
+	font-family: 微软雅黑, Verdana, sans-serif, 宋体;
+}
+
+
+.report_tableClass {
+	font-size: 12px;
+	width: 100%;
+	position: relative;
+	margin: auto;
+	table-layout: fixed;
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+}
+
+.report_tableClass thead th {
+	background-color: #2D2D2D;
+	color: white;
+	height: 30px;
+}
+
+.report_table_body_tr {
+	background-color: #808080;
+	text-align: center;
+}
+
+.report_table_body_td {
+	word-wrap: break-word;
+	background-color: #494949;
+	color: white;
+}
+
+.report_tableClass td {
+	word-wrap: break-word;
+}
+
+.lightRow {
+	word-wrap: break-word;
+	background-color: #2682AF;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+}

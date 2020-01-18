@@ -1,0 +1,14 @@
+/*页面调用系统公共字典下拉表*/
+页面引用JS: common/js/util/sys_pub_dic.js
+页面select:<select pubDicGroup="hgfx" allText="我是allText" selectValue="南通"></select>
+pubDicGroup:获取hgfx类型所属的数据库字典数据
+allText:如果存在只则在第一位插入值未空的提示选项 例如:<option value="">我是allText</option>
+selectValue:默认选中选项,按值来
+
+--引用日期控件
+<script type="text/javascript" src="${base }/common/My97DatePicker/WdatePicker.js"></script>
+
+--执行任务特殊替代
+
+insert into XXX values('$UUID$')
+后台替换$UUID$为uuid

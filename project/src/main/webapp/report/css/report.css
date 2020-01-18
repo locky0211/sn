@@ -1,0 +1,131 @@
+@CHARSET "UTF-8";
+
+body {
+	font-size: 12px;
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+form {
+	padding: 0px;
+	margin: 0px;
+}
+
+#reportForm {
+	width: 100%;
+}
+
+#reportHiddenDiv {
+	display: none;
+}
+
+#reportToolBarTable {
+	height: 32px;
+}
+
+#reportToolBarTable td {
+	vertical-align: middle;
+	font-size: 12px;
+}
+
+.reportToolBarSep {
+	background-image: url("../images/x-toolbar-sep.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 4px;
+	height: 16px;
+	margin: 0 2px 0;
+}
+
+#reportPageSize {
+	margin-left: 2px;
+}
+
+.report-toolbar-first {
+	background-image: url("../images/x-toolbar-image.png") !important;
+	background-repeat: no-repeat;
+	background-position: 0px -54px;
+}
+
+.report-toolbar-pre {
+	background-image: url("../images/x-toolbar-image.png") !important;
+	background-repeat: no-repeat;
+	background-position: 0px -72px;
+}
+
+.report-toolbar-next {
+	background-image: url("../images/x-toolbar-image.png") !important;
+	background-repeat: no-repeat;
+	background-position: 0px -90px;
+}
+
+.report-toolbar-last {
+	background-image: url("../images/x-toolbar-image.png") !important;
+	background-repeat: no-repeat;
+	background-position: 0px -108px;
+}
+
+.report-toolbar-out {
+	background-image: url("../images/x-toolbar-image.png") !important;
+	background-repeat: no-repeat;
+	background-position: 0px -395px;
+}
+
+#reportFormDiv {
+	width: 100%;
+	background-color: #EEEEEE;
+}
+
+#reportFormId td {
+	font-size: 12px;
+	padding: 2px;
+}
+
+#reportFormControlPanelDiv {
+	width: 100%;
+	padding: 0px;
+	text-align: center;
+	height: 7px;
+	overflow: hidden;
+}
+
+#reportFormControlPanelDivUp {
+	background-image: url("../images/x-toolbar-pane-up.png");
+	background-repeat: no-repeat;
+	cursor: pointer;
+	width: 114px;
+	height: 7px;
+	position: relative;
+	margin: auto;
+}
+
+#reportFormControlPanelDivDown {
+	background-image: url("../images/x-toolbar-pane-down.png");
+	background-repeat: no-repeat;
+	cursor: pointer;
+	width: 114px;
+	height: 7px;
+	position: relative;
+	margin: auto;
+	display: none;
+}
+
+#mm {
+	display: none;
+}
+
+ul.ztree {
+	border: 1px solid #617775;
+	background: #F9FAFB;
+	width: 184px;
+	height: 360px;
+	overflow-y: scroll;
+	overflow-x: auto;
+}
+
+.ztree_comboTree_content_div {
+	z-index: 9999;
+}

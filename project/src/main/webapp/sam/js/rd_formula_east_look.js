@@ -1,0 +1,3 @@
+function onCancel() {
+	CloseWindow("cancel");
+}

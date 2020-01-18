@@ -1,0 +1,103 @@
+.tab {
+	font-size: 12px;
+	width: 100%;
+	position: relative;
+	margin: auto;
+	table-layout: fixed;
+}
+
+.tab_top {
+	font-size: 12px;
+	width: 100%;
+	position: relative;
+	margin: auto;
+	table-layout: fixed;
+	border-top: 1px solid #000000;
+}
+
+.tab_top_left {
+	font-size: 12px;
+	width: 100%;
+	position: relative;
+	margin: auto;
+	table-layout: fixed;
+	border-top: 1px solid #000000;
+	border-left: 1px solid #000000;
+}
+
+.tab td {
+	word-wrap: break-word;
+}
+
+.tab_align_l {
+	text-align: left;
+}
+
+.tab_align_c {
+	text-align: center;
+}
+
+.tab_align_r {
+	text-align: right;
+}
+
+.tab_label {
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+
+.tab_label_l {
+	background-color: #E6EFFE;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	border-left: 1px solid #000000;
+}
+
+.tab_label_nr {
+	background-color: #E6EFFE;
+	border-bottom: 1px solid #000000;
+}
+
+.tab_label_nb {
+	background-color: #E6EFFE;
+	border-bottom: 1px solid #000000;
+}
+
+.tab_field {
+	word-wrap: break-word;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+
+.tab_field_nr {
+	word-wrap: break-word;
+	border-bottom: 1px solid #000000;
+}
+
+.tab_field_nb {
+	word-wrap: break-word;
+	border-right: 1px solid #000000;
+}
+
+.formulaCell {
+	background-color: #99CCFF;
+}
+
+.noDataCell {
+	background-color: #969696;
+}
+
+.row-num {
+	width: 20px;
+	text-align: center;
+}
+
+.pTitle {
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-family: 微软雅黑, Verdana, sans-serif, 宋体;
+	width: 100%;
+	text-align: center;
+}

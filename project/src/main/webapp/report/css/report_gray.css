@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+
+#reportToolBarDiv {
+	background-image: url("../images/x-toolbar-background.png");
+	background-repeat: repeat-x;
+	width: 100%;
+}
+
+#reportTableDiv {
+	overflow: auto;
+	width: 100%;;
+	text-align: center;
+	background-color: #FFFFFF;
+}
+
+#reportFormDiv {
+	width: 100%;
+	background-color: #F8F8F8;
+}
+
+#reportTablePTitle {
+	font-size: 20px;
+	color: #3F3F3F;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 8px;
+	font-family: 微软雅黑, Verdana, sans-serif, 宋体;
+}
+
+.report_tableClass {
+	font-size: 12px;
+	width: 100%;
+	position: relative;
+	margin: auto;
+	table-layout: fixed;
+	border-top: 1px solid #D3D3D3;
+	border-left: 1px solid #D3D3D3;
+}
+
+.report_tableClass thead th {
+	background-color: #EFEFEF;
+	color: #3F3F3F;
+	height: 30px;
+	border-right: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+}
+
+.report_table_body_tr {
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+.report_table_body_td {
+	word-wrap: break-word;
+	background-color: #FFFFFF;
+	border-right: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+}
+
+.report_tableClass td {
+	word-wrap: break-word;
+	border-right: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+}
+
+.lightRow {
+	word-wrap: break-word;
+	background-color: #DBDCDE;
+	cursor: pointer;
+	border-right: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+}

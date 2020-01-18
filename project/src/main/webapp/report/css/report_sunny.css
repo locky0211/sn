@@ -1,0 +1,71 @@
+@CHARSET "UTF-8";
+
+#reportToolBarDiv {
+	background-color: #FEEEBD;
+	width: 100%;
+}
+
+#reportFormDiv {
+	width: 100%;
+	background-color: #F8F8F8;
+}
+
+#reportTableDiv {
+	overflow: auto;
+	width: 100%;;
+	text-align: center;
+	background-color: #FEF2CD;
+}
+
+#reportTablePTitle {
+	font-size: 20px;
+	color: #808080;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 8px;
+	font-family: 微软雅黑, Verdana, sans-serif, 宋体;
+}
+
+.report_tableClass {
+	font-size: 12px;
+	width: 100%;
+	position: relative;
+	margin: auto;
+	table-layout: fixed;
+	border-top: 1px solid #8E846B;
+	border-left: 1px solid #8E846B;
+}
+
+
+.report_tableClass thead th {
+	background-color: #FEE271;
+	color: #4C3000;
+	height: 30px;
+	border-right: 1px solid #8E846B;
+	border-bottom: 1px solid #8E846B;
+}
+
+.report_table_body_tr {
+	text-align: center;
+}
+
+.report_table_body_td {
+	word-wrap: break-word;
+	background-color: #FEF8E4;
+	color: #444444;
+}
+
+.report_table_body_td {
+	word-wrap: break-word;
+	border-right: 1px solid #8E846B;
+	border-bottom: 1px solid #8E846B;
+}
+
+.lightRow {
+	word-wrap: break-word;
+	background-color: #2682AF;
+	cursor: pointer;
+	color: white;
+	border-right: 1px solid #8E846B;
+	border-bottom: 1px solid #8E846B;
+}
