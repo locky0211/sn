@@ -1,10 +1,10 @@
 package com.efraiser.test.db.service.jgyrecord.impl;
 
 import com.efraiser.test.common.util.DateUtil;
-import com.efraiser.test.db.model.JgyRecord;
+import com.efraiser.test.db.model.sys.JgyRecord;
 import com.efraiser.test.db.service.BaseServiceImpl;
 import com.efraiser.test.db.service.jgyrecord.JgyRecordService;
-import com.efraiser.test.db.service.sysuser.SysUserService;
+import com.efraiser.test.db.service.sys.sysuser.SysUserService;
 import org.nutz.dao.Sqls;
 import org.nutz.dao.sql.Sql;
 import org.nutz.dao.sql.SqlCallback;

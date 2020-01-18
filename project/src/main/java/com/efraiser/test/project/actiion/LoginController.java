@@ -3,11 +3,11 @@ package com.efraiser.test.project.actiion;
 import com.efraiser.test.common.constant.SystemConstants;
 import com.efraiser.test.common.util.DateUtil;
 import com.efraiser.test.common.util.StrUtil;
-import com.efraiser.test.db.model.SysUser;
+import com.efraiser.test.db.model.sys.SysUser;
 import com.efraiser.test.db.service.jgyrecord.JgyRecordService;
-import com.efraiser.test.db.service.sysqxgl.SysQxglService;
-import com.efraiser.test.db.service.sysuser.SysUserService;
-import com.efraiser.test.db.service.sysuserloginlog.SysUserLoginLogService;
+import com.efraiser.test.db.service.sys.sysqxgl.SysQxglService;
+import com.efraiser.test.db.service.sys.sysuser.SysUserService;
+import com.efraiser.test.db.service.sys.sysuserloginlog.SysUserLoginLogService;
 import com.efraiser.test.project.config.LocalConfig;
 
 import com.efraiser.test.project.util.IpUtil;
@@ -16,10 +16,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
