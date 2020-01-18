@@ -1,0 +1,142 @@
+body {
+	font-size: 12px;
+	overflow: auto;
+}
+
+.subNameDiv {
+	margin-top: 10px;
+	margin-bottom: 2px;
+	clear: both;
+	font-weight: bold;
+	padding-left: 5px;
+}
+
+.pTitle {
+	font-size: 18px;
+	color: #808080;
+	font-weight: bold;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	font-family: 微软雅黑, Verdana, sans-serif, 宋体;
+	width: 100%;
+	text-align: center;
+}
+
+.rd-table {
+	width: 100%;
+	border-top: 1px solid black;
+}
+
+.rd-row-num {
+	width: 34px;
+	text-align: center;
+}
+
+.input_out {
+	height: 20px;
+	width: 97%;
+}
+
+.rd-table td,th {
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	height: 30px;
+	padding: 0px;
+	cursor: pointer;
+}
+
+.rd-table nobr {
+	padding: 4px;
+}
+
+.td-param-cell {
+	text-align: right;
+	width: 120px;
+	min-width: 120px;
+}
+
+.td-data {
+	text-align: right;
+	width: 120px;
+	min-width: 120px;
+}
+
+.td-data_0 {
+	text-align: right;
+	background-color: #99CCFF;
+	width: 120px;
+	min-width: 120px;
+}
+
+.td-data_1 {
+	text-align: right;
+	width: 120px;
+	cursor: pointer;
+	min-width: 120px;
+}
+
+.td-data_2 {
+	text-align: right;
+	background-color: #C0C0C0;
+	width: 120px;
+	min-width: 120px;
+}
+
+.footer-td-button {
+	text-align: center;
+}
+
+.redfont {
+	color: red;
+	font-size: 11px;
+}
+
+.bjNobr {
+	color: red;
+	font-size: 11px;
+}
+
+* #btnDiv {
+	text-align: center;
+	width: 100%;
+	position: absolute;
+}
+
+.emptyDiv {
+	height: 80px;
+	width: 100%
+}
+
+#headDiv {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.headDiv {
+	width: 100%;
+}
+
+.TD_C {
+	text-align: center;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.TD_L {
+	text-align: left;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.odd_row {
+	
+}
+
+.even_row {
+	
+}
+
+.in_right {
+	background-color: #ECEDEF;
+}
