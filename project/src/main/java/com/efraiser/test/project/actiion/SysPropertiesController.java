@@ -1,15 +1,14 @@
 package com.efraiser.test.project.actiion;
 
-import com.efraiser.test.project.config.LocalConfig;
+import com.efraiser.test.common.config.LocalConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("sys/properties")
-public class SysPropertiesController {
+public class SysPropertiesController extends BaseController{
 
     @Autowired
     private LocalConfig localConfig;

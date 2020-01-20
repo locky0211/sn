@@ -8,7 +8,7 @@ import com.efraiser.test.db.service.jgyrecord.JgyRecordService;
 import com.efraiser.test.db.service.sys.sysqxgl.SysQxglService;
 import com.efraiser.test.db.service.sys.sysuser.SysUserService;
 import com.efraiser.test.db.service.sys.sysuserloginlog.SysUserLoginLogService;
-import com.efraiser.test.project.config.LocalConfig;
+import com.efraiser.test.common.config.LocalConfig;
 
 import com.efraiser.test.project.util.IpUtil;
 import org.slf4j.Logger;
@@ -32,7 +32,7 @@ import java.util.Map;
  * @author efraiser.xiaxiaofeng
  */
 @Controller
-public class LoginController {
+public class LoginController extends BaseController{
 
     private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
@@ -191,14 +191,14 @@ public class LoginController {
                  * list=sysUserDao.findSysUserbyRole("2"); for(String id:list){
                  * record=new
                  * JgyRecord(id,DateUtil.getNow("yyyyMM"),"0","0","0");
-                 * jgyRecordDao.dao().insert(record); }
+                 * jgyRecordDao.rdTableInfoService().insert(record); }
                  *
                  * } JgyRecord
                  * record1=jgyRecordDao.fetchx(us.getUserId(),DateUtil
                  * .getNow("yyyyMM")); int count
                  * =Integer.parseInt(record1.getLoginCount());
                  * record1.setLoginCount(String.valueOf(count+1));
-                 * jgyRecordDao.dao().update(record1);
+                 * jgyRecordDao.rdTableInfoService().update(record1);
                  */
 
             }
@@ -324,7 +324,7 @@ public class LoginController {
 //
 //    @At()
 //    public View doLoginWj(HttpServletRequest req, HttpSession session) {
-//        String datereport = Mvcs.ctx().getDefaultIoc().get(String.class, "DateFormat");
+ //            String datereport = LocalConfig.getInstance().getProperties().getDateFormat();
 //        session.setAttribute("DateFormat", datereport);
 //
 //        String u = (String) session.getAttribute("ssoclientagent.email");
@@ -339,7 +339,7 @@ public class LoginController {
 //        lUser.setLastLoginDate(DateUtil.getNow("yyyy-MM-dd HH:mm:ss"));
 //        lUser.setLastLoginIP(IpUtil.getIpAddrByRequest(req));
 //        us.setLoginCount(loginCount);
-//        sysUserDao.dao().updateIgnoreNull(lUser);// 修改用户最后登录时间
+//        sysUserDao.rdTableInfoService().updateIgnoreNull(lUser);// 修改用户最后登录时间
 //        sysUserLoginLogDao.saveUserLoginLog("登录本系统", us, req);// 添加登录记录
 //        req.getSession().setAttribute(SystemConstants.SESSION_USER, us);// session放入用户对象
 //        req.getSession().setAttribute(SystemConstants.SESSION_USER_ID, us.getUserId());// session放入用户编号
@@ -363,13 +363,13 @@ public class LoginController {
 //                    return list;
 //                }
 //            });
-//            sysUserDao.dao().execute(sqls);
+//            sysUserDao.rdTableInfoService().execute(sqls);
 //            List<String> depids = sqls.getList(String.class);
 //            if (depids.contains(SystemBrNo)) {
 //                req.getSession().setAttribute(SystemConstants.SystemBrNo, SystemBrNo);
 //            } else {
 //                for (String depid : depids) {
-//                    List<SysBmgl> list = sysUserDao.dao().query(SysBmgl.class, Cnd.where("bm_code", "=", depid).and("count_flag", "=", "1"), null);
+//                    List<SysBmgl> list = sysUserDao.rdTableInfoService().query(SysBmgl.class, Cnd.where("bm_code", "=", depid).and("count_flag", "=", "1"), null);
 //                    if (list.size() > 0) {
 //                        req.getSession().setAttribute(SystemConstants.brNo, depid);
 //                        req.getSession().setAttribute(SystemConstants.SystemBrNo, "");
@@ -393,10 +393,10 @@ public class LoginController {
 //                    return list;
 //                }
 //            });
-//            sysUserDao.dao().execute(sqls1);
+//            sysUserDao.rdTableInfoService().execute(sqls1);
 //            List<String> depids = sqls1.getList(String.class);
 //            for (String depid : depids) {
-//                List<SysBmgl> list = sysUserDao.dao().query(SysBmgl.class, Cnd.where("bm_code", "=", depid).and("count_flag", "=", "1"), null);
+//                List<SysBmgl> list = sysUserDao.rdTableInfoService().query(SysBmgl.class, Cnd.where("bm_code", "=", depid).and("count_flag", "=", "1"), null);
 //                if (list.size() > 0) {
 //                    req.getSession().setAttribute(SystemConstants.brNo, depid);
 //                    req.getSession().setAttribute(SystemConstants.SystemBrNo, "");
@@ -412,20 +412,20 @@ public class LoginController {
 //                List<String> list = sysUserDao.findSysUserbyRole("2");
 //                for (String id : list) {
 //                    record = new JgyRecord(id, DateUtil.getNow("yyyyMM"), "0", "0", "0");
-//                    jgyRecordDao.dao().insert(record);
+//                    jgyRecordDao.rdTableInfoService().insert(record);
 //                }
 //            } else {
 //                record = jgyRecordDao.fetchx(us.getUserId(), DateUtil.getNow("yyyyMM"));
 //                if (record == null) {
 //                    record = new JgyRecord(us.getUserId(), DateUtil.getNow("yyyyMM"), "0", "0", "0");
-//                    jgyRecordDao.dao().insert(record);
+//                    jgyRecordDao.rdTableInfoService().insert(record);
 //                }
 //            }
 //
 //            record = jgyRecordDao.fetchx(us.getUserId(), DateUtil.getNow("yyyyMM"));
 //            int count = Integer.parseInt(record.getLoginCount());
 //            record.setLoginCount(String.valueOf(count + 1));
-//            jgyRecordDao.dao().update(record);
+//            jgyRecordDao.rdTableInfoService().update(record);
 //        }
 //
 //        if (mainJsp == null || "null".equals(mainJsp) || mainJsp.length() <= 1) {

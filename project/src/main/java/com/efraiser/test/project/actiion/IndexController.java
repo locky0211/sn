@@ -1,7 +1,6 @@
 package com.efraiser.test.project.actiion;
 
 
-import com.efraiser.test.project.vo.TestVO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -59,22 +58,22 @@ public class IndexController {
     }
 
 
-    @RequestMapping("/indexJson")
-    @ResponseBody
-    public TestVO indexJson(String test) {
-
-
-        return new TestVO(test, test);
-    }
-
-
-    @RequestMapping("/requestJson")
-    @ResponseBody
-    public TestVO requestJson(@RequestParam String id, @RequestBody TestVO test) {
-
-
-        return new TestVO(id + test.getId(), id + test.getName());
-    }
+//    @RequestMapping("/indexJson")
+//    @ResponseBody
+//    public TestVO indexJson(String test) {
+//
+//
+//        return new TestVO(test, test);
+//    }
+//
+//
+//    @RequestMapping("/requestJson")
+//    @ResponseBody
+//    public TestVO requestJson(@RequestParam String id, @RequestBody TestVO test) {
+//
+//
+//        return new TestVO(id + test.getId(), id + test.getName());
+//    }
 
 
 }

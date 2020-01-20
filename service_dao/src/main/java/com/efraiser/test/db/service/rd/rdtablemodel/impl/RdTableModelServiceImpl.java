@@ -39,6 +39,7 @@ public class RdTableModelServiceImpl extends BaseServiceImpl<RdTableModel> imple
 
     private Mirror<RdTableModel> rdmMirror = Mirror.me(RdTableModel.class);
 
+    @Override
     public List<RdTableModel> resolveTableExcelTemplate(String tableId, RdTableInfo tableInfo, String excelFilePath, List<RdTableModelPCT> tableModelPCTs, List<String> formulaList,
                                                         List<RdTableColumnContrast> rccList, List<Map<String, String>> colMapList) {
         try {
@@ -218,6 +219,7 @@ public class RdTableModelServiceImpl extends BaseServiceImpl<RdTableModel> imple
         return null;
     }
 
+    @Override
     public void saveExcelFile(String excelFilePath, String reportExcelTempletPath, RdTableInfo tableInfo) {
         File tempExcelFile = new File(excelFilePath);
         File excelFile2 = FileUtil.createFile(reportExcelTempletPath + File.separator + tableInfo.getTabCode() + "_" + tableInfo.getVersionNo() + ".xls");
@@ -226,16 +228,19 @@ public class RdTableModelServiceImpl extends BaseServiceImpl<RdTableModel> imple
 
     }
 
+    @Override
     public List<RdTableModel> getTableModelList(String tableId) {
         return this.query(Cnd.where("tableId", "=", tableId).asc("FILE_ROWNUM"), null);
     }
 
+    @Override
     public RdTableModel getTableModelByRownum(String tableId, String rownum) {
         String sqlStr = "SELECT * FROM RD_TABLE_MODEL WHERE TABLE_ID='" + tableId + "' AND FILE_ROWNUM='" + rownum + "'";
         Sql sql = Sqls.create(sqlStr);
         return this.getObjectBySql(sql, null, null);
     }
 
+    @Override
     public String getExcelFileVersionNo(String versionNoInfo, File excelFile) {
         try {
             // 装载excel
@@ -271,37 +276,31 @@ public class RdTableModelServiceImpl extends BaseServiceImpl<RdTableModel> imple
         return null;
     }
 
+    @Override
     public List<RdTableModel> getModel(String tableId) {
-        // TODO Auto-generated method stub
         String sqlStr = "SELECT * FROM RD_TABLE_MODEL WHERE TABLE_ID='" + tableId + "'";
         Sql sql = Sqls.create(sqlStr);
         return this.getListBySql(sql);
     }
-
+    @Override
     public List<RdTableModel> getAll() {
         String sqlStr = "SELECT * FROM RD_TABLE_MODEL";
         List<RdTableModel> list = super.getListBySql(sqlStr, null, null);
         return list;
     }
-
+    @Override
     public void delAll() {
         String sqlStr = "DELETE FROM RD_TABLE_MODEL";
         Sql sql = Sqls.create(sqlStr);
         dao().execute(sql);
     }
 
+    @Override
     public void add(RdTableModel item) {
         dao().insert(item);
     }
 
-    /**
-     * 功能描述：根据reportInfo表中模版查询model表中模版数据
-     *
-     * @return
-     * @author
-     * @date 2017年10月10日
-     * @modify log:
-     */
+    @Override
     public List<RdTableModel> getModelInReportInfo() {
         String sqlStr = "SELECT * FROM SAM.RD_TABLE_MODEL WHERE TABLE_ID IN (SELECT TABLE_ID FROM DW.RD_REPORT_MID_INFO GROUP BY TABLE_ID)";
         Sql sql = Sqls.create(sqlStr);

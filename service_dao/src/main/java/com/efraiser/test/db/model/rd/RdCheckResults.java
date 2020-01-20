@@ -1,5 +1,6 @@
 package com.efraiser.test.db.model.rd;
 
+import com.efraiser.test.common.config.LocalConfig;
 import com.efraiser.test.common.util.AES;
 import com.efraiser.test.db.model.comom.BaseModelId;
 import org.nutz.dao.entity.annotation.Column;
@@ -167,7 +168,7 @@ public class RdCheckResults extends BaseModelId {
 		}
 		else
 		{
-			String ef = Mvcs.ctx().getDefaultIoc().get(String.class, "EF");
+			String ef = LocalConfig.getInstance().getProperties().getEf();
 			if("true".equals(ef))
 			{
 				byte[] encryptResult = AES.encrypt(formula);

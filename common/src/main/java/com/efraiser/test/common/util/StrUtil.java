@@ -11,9 +11,8 @@ import java.util.regex.Pattern;
 /**
  * 字符串辅助类
  * 
- * @author efraiser.xiaxiaofeng
  */
-public class StrUtil  {
+public class StrUtil extends Strings{
 
 	public static boolean isNull(String str) {
 		if (str == null || str.trim().length() == 0 || "null".equals(str)) {

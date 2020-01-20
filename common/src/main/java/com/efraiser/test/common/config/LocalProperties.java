@@ -1,4 +1,9 @@
-package com.efraiser.test.project.config;
+package com.efraiser.test.common.config;
+
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class LocalProperties {
 
@@ -19,6 +24,20 @@ public class LocalProperties {
     private String mainJsp;
 
     private String systemBrNo;
+
+    private String ef;
+
+    //缓存配置
+    private String cacheNameStr;
+    private Set<String> getCacheNameSet = new HashSet<>();
+
+    public String getEf() {
+        return ef;
+    }
+
+    public void setEf(String ef) {
+        this.ef = ef;
+    }
 
     public String getMainJsp() {
         return mainJsp;
@@ -82,5 +101,35 @@ public class LocalProperties {
 
     public void setMainImg(String mainImg) {
         this.mainImg = mainImg;
+    }
+
+    public String getCacheNameStr() {
+        return cacheNameStr;
+    }
+
+    public void setCacheNameStr(String cacheNameStr) {
+        this.cacheNameStr = cacheNameStr;
+    }
+
+
+    /**
+     * 判断是否使用缓存
+     * @param cacheName
+     * @return
+     */
+    public boolean checkCacheName(String cacheName) {
+
+        if (getCacheNameSet.size() <= 0) {
+            if (StringUtils.isBlank(cacheNameStr)) {
+                return false;
+            }
+
+            String[] cacheNames = cacheNameStr.split(",");
+            for (String cacheNameDetail : cacheNames) {
+                getCacheNameSet.add(cacheNameDetail);
+            }
+        }
+
+        return getCacheNameSet.contains(cacheName);
     }
 }

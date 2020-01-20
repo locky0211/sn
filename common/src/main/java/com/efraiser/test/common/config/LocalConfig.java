@@ -1,4 +1,4 @@
-package com.efraiser.test.project.config;
+package com.efraiser.test.common.config;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -17,14 +17,25 @@ public class LocalConfig {
     @Value("${server.servlet.context-path}")
     private String projectName;
 
-    public LocalConfig(){
+
+    @Value("${spring.datasource.driver-class-name}")
+    private String driver;
+
+    public LocalConfig() {
         localConfig = this;
     }
 
 
+    public String getDriver() {
+        return driver;
+    }
 
-    public static LocalConfig getInstance(){
-        return  localConfig;
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
+
+    public static LocalConfig getInstance() {
+        return localConfig;
     }
 
 

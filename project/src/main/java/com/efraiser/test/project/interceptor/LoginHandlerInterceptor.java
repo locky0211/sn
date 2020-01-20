@@ -1,7 +1,7 @@
 package com.efraiser.test.project.interceptor;
 
 import com.efraiser.test.common.constant.SystemConstants;
-import com.efraiser.test.project.config.LocalConfig;
+import com.efraiser.test.common.config.LocalConfig;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

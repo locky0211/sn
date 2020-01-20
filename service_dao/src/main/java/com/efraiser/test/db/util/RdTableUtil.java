@@ -13,6 +13,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.nutz.lang.Mirror;
+import org.nutz.mvc.Mvcs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -35,6 +36,7 @@ public class RdTableUtil {
 
     @Autowired
     private RdTableModelService rdTableModelService;
+
 
     /**
      * 判断是否为百分比单元格,用于导入数据时的判断
@@ -425,25 +427,6 @@ public class RdTableUtil {
         }
     }
 
-    public  String delParentNode(String brNos) {
-        RdReportInfoDao rdReportInfoDao = Mvcs.ctx().getDefaultIoc().get(RdReportInfoDao.class, "rdReportInfoDao");
-        String brNo = "";
-        String brnos[] = brNos.split(",");
-        for (int i = 0; i < brnos.length; i++) {
-            int num = rdReportInfoDao.CheckParent(brnos[i]);
-            if (num == 0) {
-                if (i == brnos.length - 1) {
-                    brNo += "" + brnos[i] + "";
-                } else {
-                    brNo += "" + brnos[i] + ",";
-                }
-            }
-
-        }
-
-        return brNo;
-
-    }
 
     public static String getBfReportColumnName(String str, String n) {
         if (!"C".equals(n)) {

@@ -1,6 +1,7 @@
 package com.efraiser.test.common.util;
 
-import com.efraiser.rd.util.Arith;
+
+import com.efraiser.test.common.util.rd.Arith;
 
 import java.io.File;
 import java.io.FileWriter;
