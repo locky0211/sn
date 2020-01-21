@@ -1,5 +1,6 @@
 package com.efraiser.test.db.service.rd.rdtableinfo.impl;
 
+import com.efraiser.test.common.config.LocalConfig;
 import com.efraiser.test.common.constant.RdTableConstants;
 import com.efraiser.test.common.util.CommUtil;
 import com.efraiser.test.db.util.RdCheckUtil;
@@ -420,7 +421,7 @@ public class RdTableInfoServiceImpl extends BaseServiceImpl<RdTableInfo> impleme
 
     @Override
     public String getVersionInfo(String tabCode, String reportDate) {
-        String  databaseType= Mvcs.ctx().getDefaultIoc().get(String.class, "driver");
+        String  databaseType=  LocalConfig.getInstance().getDriver();
         String sqlStr = null;
         if("oracle.jdbc.driver.OracleDriver".equals(databaseType)){
             sqlStr="SELECT VERSION_NO FROM RD_TABLE_INFO WHERE TABCODE='"+tabCode+"' AND '"+reportDate+"' BETWEEN substr(START_DATE,1,6) AND substr(END_DATE,1,6) AND rownum <=1 ORDER BY START_DATE ASC  ";
@@ -432,7 +433,7 @@ public class RdTableInfoServiceImpl extends BaseServiceImpl<RdTableInfo> impleme
 
     @Override
     public Object getTableVersionNo(String tabCode,String reportDate) {
-        String  databaseType= Mvcs.ctx().getDefaultIoc().get(String.class, "driver");
+        String  databaseType=  LocalConfig.getInstance().getDriver();
         String sql="";
         if(StrUtil.isNull(reportDate)){
             sql="SELECT VERSION_NO FROM RD_TABLE_INFO WHERE TABCODE='"+tabCode+"' ORDER BY START_DATE DESC";

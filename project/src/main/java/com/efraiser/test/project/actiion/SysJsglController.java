@@ -60,7 +60,7 @@ public class SysJsglController extends BaseController {
      * @param jsId 　角色Id
      * @return
      */
-    @RequestMapping("/getSysJsList")
+    @RequestMapping("/toEditSysJsList")
     public ModelAndView toEditSysJsList(String jsId, HttpServletRequest req) {
 
         ModelAndView modelAndView = new ModelAndView();
@@ -100,7 +100,7 @@ public class SysJsglController extends BaseController {
      *
      * @return
      */
-    @RequestMapping("/getSysJsqlList")
+    @RequestMapping("/getSysJsqlListForYonghu")
     @ResponseBody
     public List<SysJsgl> getSysJsqlListForYonghu() {
         return sysJsglService.getJsglListForYh();

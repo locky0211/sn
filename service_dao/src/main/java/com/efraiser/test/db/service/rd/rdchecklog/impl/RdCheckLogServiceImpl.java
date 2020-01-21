@@ -1,5 +1,6 @@
 package com.efraiser.test.db.service.rd.rdchecklog.impl;
 
+import com.efraiser.test.common.config.LocalConfig;
 import com.efraiser.test.common.util.DateUtil;
 import com.efraiser.test.common.util.StrUtil;
 import com.efraiser.test.db.model.rd.RdCheckLog;
@@ -140,7 +141,7 @@ public class RdCheckLogServiceImpl extends BaseServiceImpl<RdCheckLog> implement
 
 	@Override
 	public RdCheckLogHelper getRdReportChekNum(String reportDate, String userId) {
-		String  databaseType= Mvcs.ctx().getDefaultIoc().get(String.class, "driver");
+		String  databaseType= LocalConfig.getInstance().getDriver();
 		Sql sql ;
 		if("oracle.jdbc.driver.OracleDriver".equals(databaseType)){
 			sql = Sqls.create("SELECT (SELECT count(*)  FROM SYS_BMGL bm,SYS_GGZD zd WHERE zd.G_ID='RD_TABLE_TAB_TYPE' AND BM.COUNT_FLAG='1' AND bm.BM_AREA IS NOT NULL AND zd.ZD_VALUE IN("

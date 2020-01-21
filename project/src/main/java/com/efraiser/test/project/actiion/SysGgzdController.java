@@ -37,9 +37,9 @@ public class SysGgzdController extends BaseController {
     @RequestMapping("/getGgzdZuList")
     @ResponseBody
     public Object getGgzdZuList() {
-        SysGgzdServiceImpl sysGgzdService1 = (SysGgzdServiceImpl) sysGgzdZuService;
+        SysGgzdZuServiceImpl sysGgzdZuServiceImpl = (SysGgzdZuServiceImpl) sysGgzdZuService;
 
-        return sysGgzdService1.query(null, null);
+        return sysGgzdZuServiceImpl.query(null, null);
     }
 
     /**
@@ -148,7 +148,7 @@ public class SysGgzdController extends BaseController {
      * @param ggzd 公共字典对象
      * @return
      */
-    @RequestMapping("/deleteGgzdZu")
+    @RequestMapping("/addOrUpdateGgzd")
     @ResponseBody
     public Object addOrUpdateGgzd(SysGgzd ggzd) {
         try {
