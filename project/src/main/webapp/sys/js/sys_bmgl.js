@@ -12,6 +12,12 @@ function onAdd() {
 	bmglForm.validate();
 	if (bmglForm.isValid()) {
 		var o = bmglForm.getData();
+
+		if(o.bmCode != null && o.bmCode == o.pId){
+            mini.alert('操作失败!上级机构不能选自己！', '提醒');
+            return;
+		}
+
 		var str=o.bmCode;
 //		var reg = /^[A-Z0-9]{1,}(_[A-Z0-9]{1,})+$/;     
 //	     var r = str.match(reg);     
@@ -29,6 +35,7 @@ function onAdd() {
 					type : 'post',
 					data : json,
 					dataType : 'json',
+					contentType : "application/json",
 					cache : false,
 					success : function(text) {
 						if (text.success) {
@@ -73,6 +80,28 @@ function checkBmCode(e) {
 		}
 	}
 };
+
+
+function checkPId(e) {
+    if (e.isValid) {
+        if (objId == '') {
+            $.ajax({
+                async : false,
+                url : base + "sys/bm/checkBmCode.nut?bmCode=" + e.value,
+                dataType : 'json',
+                success : function(data) {
+                    if (!data.success) {
+                        e.errorText = "机构编号已存在";
+                        e.isValid = false;
+                    }
+                }
+            });
+        }
+    }
+};
+
+
+
 
 function SetDataOfOrgan(data) {
 	// 添加时自动给所属部门赋已选节点的值

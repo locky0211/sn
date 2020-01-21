@@ -84,7 +84,8 @@ function search() {
 
 function doSaveJG() {
 	var rows = bmglgrid.getList();
-	var dataStr = '';
+    var sortArray = new Array();
+
 	mini.mask({
 				el : document.body,
 				cls : 'mini-mask-loading',
@@ -93,13 +94,19 @@ function doSaveJG() {
 	for (var i = 0, l = rows.length; i < l; i++) {
 		var row = rows[i];
 		var index = bmglgrid.indexOf(row);
-		dataStr += "{sortNum:'" + index + "',bmCode:'" + row.bmCode + "'},";
+
+        var obj ={};
+        obj.sortNum=""+index;
+        obj.bmCode=""+row.bmCode;
+        obj.pId= ""+row.pId;
+        sortArray.push(obj);
 	}
 	$.ajax({
 				type : "POST",
 				url : base + "sys/bm/doSaveBmglJG.nut",
-				data : "[" + dataStr.substring(0, dataStr.length - 1) + "]",
+				data :mini.encode(sortArray),
 				dataType : 'json',
+        		contentType : "application/json",
 				success : function(data) {
 					if (data.success) {
 						mini.alert("操作成功!!");

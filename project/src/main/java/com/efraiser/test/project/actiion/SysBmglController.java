@@ -163,16 +163,15 @@ public class SysBmglController extends BaseController {
             return requestResult(false, null);
         }
     }
-
     /**
      * 校验部门Id
      *
      * @param bmCode
      * @return
      */
-    @RequestMapping("/checkbmCode")
+    @RequestMapping("/checkBmCode")
     @ResponseBody
-    public Object checkbmCode(String bmCode) {
+    public Object checkBmCode(String bmCode) {
         if (sysBmglService.checkbmCode(bmCode)) {
             return requestResult(true, "");
         } else {

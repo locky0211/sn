@@ -43,7 +43,7 @@
 					<td class="tab_label tab_align_r">上级机构：</td>
 					<td class="tab_field_nr"><input id="sjbmId"  name="pId" class="mini-treeselect" style="width: 98%;" url="${base }/sys/bm/getSysBmList.nut" multiSelect="false"
 						textField="bmName" valueField="bmCode" parentField="pId" checkRecursive="true" showFolderCheckBox="false" expandOnLoad="true" showClose="true"
-						oncloseclick="onCloseClick" popupWidth="250" popupHeight="150px;" value="${obj.pId}" /></td>
+						oncloseclick="onCloseClick" popupWidth="250" popupHeight="150px;" value="${obj.pId}"  /></td>
 
 				</tr>
 				<tr>
