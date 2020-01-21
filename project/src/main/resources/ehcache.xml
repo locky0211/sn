@@ -14,7 +14,7 @@
 		maxEntriesLocalDisk="10000000"
 		diskExpiryThreadIntervalSeconds="120"
 		memoryStoreEvictionPolicy="LRU">
-		<persistence strategy="localTempSwap"></persistence>
+		<!--<persistence strategy="localTempSwap"></persistence>-->
 	</defaultCache>
 
 	<cache name="commonCache"
