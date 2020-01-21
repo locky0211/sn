@@ -7,9 +7,12 @@ import com.efraiser.test.db.service.sys.sysqxgl.impl.SysQxglServiceImpl;
 import org.nutz.dao.Cnd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * 权限管理action
@@ -37,16 +40,16 @@ public class SysQxGlController extends BaseController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/sys/jsp/sys_qxgl");
-        modelAndView.addObject(sysQxglServiceImpl.fetch(qxId));
+        modelAndView.addObject("obj",sysQxglServiceImpl.fetch(qxId));
 
         return modelAndView;
     }
 
     @RequestMapping("/doSaveQxglJG")
     @ResponseBody
-    public Object doSaveQxglJG(SysQxgl[] qxglList) {
+    public Object doSaveQxglJG(@RequestBody  List<SysQxgl> qxglList) {
         try {
-            sysQxglService.getDao().updateIgnoreNull(qxglList);
+            sysQxglService.getDao().updateIgnoreNull(qxglList.toArray());
             return requestResult(true, "");
         } catch (Exception e) {
             e.printStackTrace();
@@ -88,7 +91,7 @@ public class SysQxGlController extends BaseController {
      */
     @RequestMapping("/addOrUpdateQxgl")
     @ResponseBody
-    public Object addOrUpdateQxgl(SysQxgl qxGl, String fg) {
+    public Object addOrUpdateQxgl(String fg, @RequestBody SysQxgl qxGl) {
         try {
             if (StrUtil.isNotNull(fg)) {
                 sysQxglService.getDao().updateIgnoreNull(qxGl);

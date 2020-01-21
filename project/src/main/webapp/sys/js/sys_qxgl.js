@@ -29,10 +29,11 @@ function onAdd() {
 					html : '信息处理中...'
 				});
 		$.ajax({
-					url : base + 'sys/qx/addOrUpdateQxgl.nut',
+					url : base + 'sys/qx/addOrUpdateQxgl.nut?fg='+o.fg,
 					type : 'post',
 					data : json,
 					dataType : 'json',
+            		contentType: "application/json",
 					cache : false,
 					success : function(text) {
 						if (text.success) {

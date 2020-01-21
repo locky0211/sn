@@ -121,15 +121,24 @@ function reload() {
 function doSaveJG() {
 	var rows = qxTreeGrid.getList();
 	var dataStr = '';
+
+    var sortArray = new Array();
+
 	for (var i = 0, l = rows.length; i < l; i++) {
 		var row = rows[i];
 		var index = qxTreeGrid.indexOf(row);
 		dataStr += "{sortNum:'" + index + "',qxId:'" + row.qxId + "',pId:'" + row.pId + "'},";
+        var obj ={};
+        obj.sortNum=""+index;
+        obj.qxId=""+row.qxId;
+        obj.pId= ""+row.pId;
+        sortArray.push(obj)
 	}
 	$.ajax({
 				type : "POST",
 				url : base + "sys/qx/doSaveQxglJG.nut",
-				data : "[" + dataStr.substring(0, dataStr.length - 1) + "]",
+				data :  mini.encode(sortArray),
+        		contentType : "application/json",
 				dataType : 'json',
 				success : function(data) {
 					if (data.success) {
