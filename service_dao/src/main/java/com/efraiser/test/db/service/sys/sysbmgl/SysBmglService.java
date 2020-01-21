@@ -6,7 +6,7 @@ import com.efraiser.test.db.service.BaseService;
 
 import java.util.List;
 
-public interface SysBmglService<T> extends BaseService {
+public interface SysBmglService extends BaseService {
 
 
     void deleteBmgl(String bmCode) throws Exception;
@@ -92,4 +92,15 @@ public interface SysBmglService<T> extends BaseService {
 
 
     List<String> getDepByUserIdAndBmCategory(String userId, String BmCategory);
+
+
+    List<SysBmgl> getXNJGByPid(String pId);
+
+
+    void deleteBrno(String[] bmCode);
+
+    List<SysBmgl> getSysBmListForBm();
+
+    List getBFHZJG();
+
 }

@@ -381,6 +381,7 @@
 
 	<xs:element name="persistence">
 	    <xs:complexType>
+            <!--<xs:attribute name="strategy" use="required" type="persistenceStrategy"/> -->
             <xs:attribute name="strategy" use="required" type="persistenceStrategy" default="localTempSwap"/>
             <xs:attribute name="synchronousWrites" use="optional" default="false" type="xs:boolean"/>
 	    </xs:complexType>

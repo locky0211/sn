@@ -12,9 +12,9 @@ import com.efraiser.test.db.service.sys.sysuser.SysUserService;
 import com.efraiser.test.db.service.sys.sysuser.impl.SysUserServiceImpl;
 import com.efraiser.test.db.service.sys.sysuserdep.SysUserDepService;
 import com.efraiser.test.db.service.sys.sysuserrole.SysUserRoleService;
+import com.efraiser.test.project.vo.SysUserVo;
 import org.nutz.ioc.impl.PropertiesProxy;
 import org.nutz.lang.Lang;
-import org.nutz.mvc.annotation.Ok;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 系统用户action
@@ -59,11 +57,7 @@ public class SysUserController extends BaseController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/sys/jsp/sys_user");
-
-        Map<String, Object> dataMap = new HashMap<>();
-        dataMap.put("OPStatus", 1);
-        modelAndView.addObject("param", dataMap);
-
+        modelAndView.addObject("OPStatus", 1);
         String roles = "";
         String deps = "";
 
@@ -138,25 +132,26 @@ public class SysUserController extends BaseController {
     /**
      * 添加和修改用户
      *
-     * @param user      用户对象
-     * @param fgUserId  用户id,用户判读是否为修改
-     * @param userOrgan 用户管辖机构id
-     * @param userRole  用户角色id
      * @return
      */
     @RequestMapping("/addOrUpdateSysUser")
     @ResponseBody
-    public Object addOrUpdateSysUser(String OPStatus, String userOrgan, String userRole, @RequestBody SysUser user) {
+    public Object addOrUpdateSysUser( @RequestBody SysUserVo userVo) {
+
+        String OPStatus= userVo.getOPStatus();//用户判读是否为修改
+        String userGxOrgan = userVo.getUserGxOrgan();// 用户管辖机构id
+        String userRole= userVo.getUserRole();//用户角色id
+        SysUser user =userVo.getSysUser();// 用户对象
         try {
             if (StrUtil.isNotNull(OPStatus)) {
-                sysUserService.updateSysUser(user, userOrgan, userRole);
+                sysUserService.updateSysUser(user, userGxOrgan, userRole);
             } else {
-                sysUserService.addSysUser(user, userOrgan, userRole);
+                sysUserService.addSysUser(user, userGxOrgan, userRole);
             }
             return true;
 
         } catch (Exception e) {
-            logger.error("addOrUpdateSysUser() error! OPStatus:[" + OPStatus + "],userOrgan:[" + userOrgan + "],userRole:[" + userRole + "],user:[" + JSONObject.toJSONString(user) + "]", e);
+            logger.error("addOrUpdateSysUser() error! userVo:[" + JSONObject.toJSONString(userVo) + "]", e);
             return false;
         }
 

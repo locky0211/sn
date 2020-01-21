@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form id="sysUserForm" method="post">
-		<input class="mini-hidden" id="OPStatus" name="OPStatus" value="${param.OPStatus }">
+		<input class="mini-hidden" id="OPStatus" name="OPStatus" value="${OPStatus }">
 		<div style="height: 100%; padding: 10px">
 			<div id="js" style="width: 43%; height: 350px; float: left; padding: 10px 20px 20px 20px">
 				<table style="table-layout: fixed;">

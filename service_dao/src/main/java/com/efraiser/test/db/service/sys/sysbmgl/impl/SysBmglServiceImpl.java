@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SysBmglServiceImpl extends BaseServiceImpl<SysBmgl> implements SysBmglService<SysBmgl> {
+public class SysBmglServiceImpl extends BaseServiceImpl<SysBmgl> implements SysBmglService {
 
 
     @Override
@@ -324,4 +324,49 @@ public class SysBmglServiceImpl extends BaseServiceImpl<SysBmgl> implements SysB
         return super.getListStringBySqlStr(sql);
     }
 
+//
+//    public Object getSysBmListByIsExistBmCategoryBySls(String userId,String bmCategory) {
+//
+//        List<SysBmgl> bmgls=new ArrayList<SysBmgl>();
+//        List<InsideOrganInfo> infos=insideOrganInfoDao.dao().query(InsideOrganInfo.class, null);
+//        for(InsideOrganInfo info:infos){
+//            SysBmgl sysBmgls=new SysBmgl();
+//            sysBmgls.setBmCode(info.getOrganCode());
+//            sysBmgls.setBmName(info.getOrganName());
+//            /*sysBmgls.setpId("FJG");*/
+//            sysBmgls.setSortNum("0");
+//            bmgls.add(sysBmgls);
+//        }
+//        return bmgls;
+//    }
+
+
+    @Override
+    public List<SysBmgl> getXNJGByPid(String pId) {
+        String sqlStr = "SELECT * FROM SYS_BMGL WHERE P_ID='" + pId + "'";
+
+        return getListBySql(Sqls.create(sqlStr));
+    }
+
+    @Override
+    public void deleteBrno(String[] bmCode) {
+        String sqlStr = "DELETE FROM SYS_BMGL WHERE BM_CODE in(@bmCode)";
+        Sql sql = Sqls.create(sqlStr);
+        sql.setParam("bmCode", bmCode);
+        dao().execute(sql);
+    }
+
+    @Override
+    public List<SysBmgl> getSysBmListForBm() {
+        return query(Cnd.where("BM_CODE", "LIKE", "BM%"), null);
+    }
+
+    @Override
+    public List getBFHZJG() {
+
+        String sqlStr = "SELECT BM_CODE,BM_NAME,P_ID,BM_TYPE,GET_GGZD_NAME(BM_TYPE,'SYS_BM_TYPE') as BM_TYPE_NAME,SORT_NUM  FROM SYS_BMGL WHERE BM_TYPE='X' ORDER BY sort_num";
+        Sql sql = Sqls.create(sqlStr);
+
+        return getListBySql(sql);
+    }
 }
