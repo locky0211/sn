@@ -264,6 +264,7 @@ function doSaveJG() {
 				data : {
 					ggzdList : "[" + dataStr.substring(0, dataStr.length - 1) + "]"
 				},
+        		contentType : "application/json",
 				dataType : 'json',
 				success : function(data) {
 					if (data.success) {

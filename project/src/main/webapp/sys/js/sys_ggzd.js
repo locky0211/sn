@@ -19,6 +19,7 @@ function add() {
 					url : base + "sys/ggzd/addOrUpdateGgzd.nut",
 					type : 'post',
 					data : json,
+            		contentType : "application/json",
 					dataType : 'json',
 					cache : false,
 					success : function(text) {

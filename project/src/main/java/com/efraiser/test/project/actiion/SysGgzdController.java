@@ -9,9 +9,9 @@ import com.efraiser.test.db.service.sys.sysggzd.SysGgzdService;
 import com.efraiser.test.db.service.sys.sysggzd.impl.SysGgzdServiceImpl;
 import com.efraiser.test.db.service.sys.sysggzdzu.SysGgzdZuService;
 import com.efraiser.test.db.service.sys.sysggzdzu.impl.SysGgzdZuServiceImpl;
-import org.nutz.mvc.annotation.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -75,9 +75,9 @@ public class SysGgzdController extends BaseController {
      * @param idFlag 公共字典组id,用于判断是否为修改
      * @return
      */
-    @RequestMapping("/addOrUpdateGgzdZu")
+    @RequestMapping(value = "/addOrUpdateGgzdzu" )
     @ResponseBody
-    public Boolean addOrUpdateGgzdZu(SysGgzdGroup ggzdzu, String idFlag) {
+    public Boolean addOrUpdateGgzdZu(@RequestBody  SysGgzdGroup ggzdzu, String idFlag) {
         try {
             if (StrUtil.isNotNull(idFlag)) {
                 sysGgzdZuService.getDao().updateIgnoreNull(ggzdzu);
@@ -205,7 +205,7 @@ public class SysGgzdController extends BaseController {
      */
     @RequestMapping("/doSaveGgzdJG")
     @ResponseBody
-    public RequestResult doSaveGgzdJG(@Param("ggzdList") SysGgzd[] ggzdList) {
+    public RequestResult doSaveGgzdJG(SysGgzd[] ggzdList) {
         try {
             sysGgzdService.getDao().updateIgnoreNull(ggzdList);
             return requestResult(true, "");
