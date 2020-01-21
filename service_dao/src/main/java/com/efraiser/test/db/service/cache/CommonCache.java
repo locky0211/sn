@@ -3,17 +3,24 @@ package com.efraiser.test.db.service.cache;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.Element;
 import org.nutz.castor.Castors;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CommonCache {
 
-	private static CommonCache commonCache = new CommonCache("commonCache");
+
+	private static CommonCache commonCache;
 
 	private Cache cache;
-	private CommonCache(String cacheName) {
-		this.cache = CacheFactory.create().getCache(cacheName);
+	private CommonCache() {
+		this.cache = CacheFactory.create().getCache("commonCache");
 	}
 
+
 	public static CommonCache getInstance() {
+		if(commonCache == null){
+			commonCache = new CommonCache();
+		}
 		return commonCache;
 	}
 

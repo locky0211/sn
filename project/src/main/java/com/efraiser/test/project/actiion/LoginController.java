@@ -4,7 +4,7 @@ import com.efraiser.test.common.constant.SystemConstants;
 import com.efraiser.test.common.util.DateUtil;
 import com.efraiser.test.common.util.StrUtil;
 import com.efraiser.test.db.model.sys.SysUser;
-import com.efraiser.test.db.service.jgyrecord.JgyRecordService;
+import com.efraiser.test.db.service.sys.jgyrecord.JgyRecordService;
 import com.efraiser.test.db.service.sys.sysqxgl.SysQxglService;
 import com.efraiser.test.db.service.sys.sysuser.SysUserService;
 import com.efraiser.test.db.service.sys.sysuserloginlog.SysUserLoginLogService;

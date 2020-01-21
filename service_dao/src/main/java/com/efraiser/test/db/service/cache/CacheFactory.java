@@ -9,7 +9,9 @@ public class CacheFactory {
 	private static CacheManager cacheManager = null;
 
 	private CacheFactory() {
-		cacheManager = CacheManager.create(SystemConstants.SYSTEM_CLASSES_PATH + "/ehcache.xml");
+
+		String path  = CacheFactory.class.getClassLoader().getResource("").getPath();
+		cacheManager = CacheManager.create(path+ "/ehcache.xml");
 	}
 
 	private static Object lock = new Object();

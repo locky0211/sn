@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SysUserDepServiceImpl extends BaseServiceImpl<SysUserDep> implements SysUserDepService<SysUserDep> {
+public class SysUserDepServiceImpl extends BaseServiceImpl<SysUserDep> implements SysUserDepService {
 
 
     @Override
-    public void addOrupdateSysUserDep(String userId, List<String> userDeps) throws Exception {
+    public void addOrupdateSysUserDep(String userId, List<String> userDeps) {
         // 删除用户角色表之前的用户角色
         this.clear(Cnd.where("USER_ID", "=", userId));
         List<SysUserDep> eds = new ArrayList<SysUserDep>();
@@ -36,5 +36,10 @@ public class SysUserDepServiceImpl extends BaseServiceImpl<SysUserDep> implement
         Sql sql = Sqls.create(sqlStr);
         sql.params().set("userId", userId);
         return super.getListStringBySqlStr(sql);
+    }
+
+    @Override
+    public List<SysUserDep> querybyUserId(String userId) {
+        return query(Cnd.where("USER_ID", "=", userId), null);
     }
 }

@@ -1,9 +1,9 @@
-package com.efraiser.test.db.service.jgyrecord.impl;
+package com.efraiser.test.db.service.sys.jgyrecord.impl;
 
 import com.efraiser.test.common.util.DateUtil;
 import com.efraiser.test.db.model.sys.JgyRecord;
 import com.efraiser.test.db.service.BaseServiceImpl;
-import com.efraiser.test.db.service.jgyrecord.JgyRecordService;
+import com.efraiser.test.db.service.sys.jgyrecord.JgyRecordService;
 import com.efraiser.test.db.service.sys.sysuser.SysUserService;
 import org.nutz.dao.Sqls;
 import org.nutz.dao.sql.Sql;
@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Service
-public class JgyRecordServiceImpl extends BaseServiceImpl<JgyRecord> implements JgyRecordService<JgyRecord> {
+public class JgyRecordServiceImpl extends BaseServiceImpl<JgyRecord> implements JgyRecordService {
 
     @Autowired
     private SysUserService sysUserService;

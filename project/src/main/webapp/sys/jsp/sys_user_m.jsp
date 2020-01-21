@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户信息</title>
 <%@include file="../../common/quote/boot.html"%>
-<script type="text/javascript" src="../js/sys_user_m.js"></script>
+<script type="text/javascript" src="${base }/sys/js/sys_user_m.js"></script>
 <script type="text/javascript">
 	var userId = '${sessionUser.userId}';
 </script>
