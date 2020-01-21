@@ -1,5 +1,6 @@
 package com.efraiser.test.project.actiion;
 
+import com.alibaba.fastjson.JSONObject;
 import com.efraiser.test.common.util.RequestResult;
 import com.efraiser.test.common.util.StrUtil;
 import com.efraiser.test.db.model.sys.SysGgzd;
@@ -9,6 +10,8 @@ import com.efraiser.test.db.service.sys.sysggzd.SysGgzdService;
 import com.efraiser.test.db.service.sys.sysggzd.impl.SysGgzdServiceImpl;
 import com.efraiser.test.db.service.sys.sysggzdzu.SysGgzdZuService;
 import com.efraiser.test.db.service.sys.sysggzdzu.impl.SysGgzdZuServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +25,8 @@ import java.util.List;
 @Controller
 @RequestMapping("sys/ggzd")
 public class SysGgzdController extends BaseController {
+
+    private Logger logger = LoggerFactory.getLogger(SysGgzdController.class);
 
     @Autowired
     private SysGgzdService sysGgzdService;
@@ -75,9 +80,9 @@ public class SysGgzdController extends BaseController {
      * @param idFlag 公共字典组id,用于判断是否为修改
      * @return
      */
-    @RequestMapping(value = "/addOrUpdateGgzdzu" )
+    @RequestMapping(value = "/addOrUpdateGgzdzu")
     @ResponseBody
-    public Boolean addOrUpdateGgzdZu(@RequestBody  SysGgzdGroup ggzdzu, String idFlag) {
+    public Boolean addOrUpdateGgzdZu(String idFlag, @RequestBody SysGgzdGroup ggzdzu) {
         try {
             if (StrUtil.isNotNull(idFlag)) {
                 sysGgzdZuService.getDao().updateIgnoreNull(ggzdzu);
@@ -86,7 +91,7 @@ public class SysGgzdController extends BaseController {
             }
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("addOrUpdateGgzdZu() error! idFlag:[" + idFlag + "],ggzdzu:[" + JSONObject.toJSONString(ggzdzu) + "]", e);
             return false;
         }
     }
@@ -104,7 +109,7 @@ public class SysGgzdController extends BaseController {
         modelAndView.setViewName(page);
 
         SysGgzdZuServiceImpl SysGgzdZuServiceimpl = (SysGgzdZuServiceImpl) sysGgzdZuService;
-        modelAndView.addObject(SysGgzdZuServiceimpl.fetch(gId));
+        modelAndView.addObject("obj", SysGgzdZuServiceimpl.fetch(gId));
         return modelAndView;
 
     }
@@ -122,7 +127,7 @@ public class SysGgzdController extends BaseController {
             sysGgzdZuService.deletGGzdZu(gId);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("deleteGgzdZu() error! gId:[" + gId + "]", e);
             return false;
         }
     }
@@ -137,7 +142,7 @@ public class SysGgzdController extends BaseController {
         ggzd.setgId(gId);
         ggzd.setpId(pId);
 
-        modelAndView.addObject(ggzd);
+        modelAndView.addObject("obj", ggzd);
 
         return modelAndView;
     }
@@ -150,7 +155,7 @@ public class SysGgzdController extends BaseController {
      */
     @RequestMapping("/addOrUpdateGgzd")
     @ResponseBody
-    public Object addOrUpdateGgzd(SysGgzd ggzd) {
+    public Object addOrUpdateGgzd(@RequestBody SysGgzd ggzd) {
         try {
             if (StrUtil.isNotNull(ggzd.getId())) {
                 sysGgzdService.getDao().updateIgnoreNull(ggzd);
@@ -159,7 +164,7 @@ public class SysGgzdController extends BaseController {
             }
             return requestResult(true, null);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("addOrUpdateGgzd() error! ggzdzu:[" + JSONObject.toJSONString(ggzd) + "]", e);
             return requestResult(false, null);
         }
     }
@@ -178,9 +183,7 @@ public class SysGgzdController extends BaseController {
         modelAndView.setViewName(page);
 
         SysGgzdServiceImpl sysGgzdServiceImpl = (SysGgzdServiceImpl) sysGgzdService;
-        sysGgzdServiceImpl.fetch(id);
-
-        modelAndView.addObject(sysGgzdServiceImpl);
+        modelAndView.addObject("obj", sysGgzdServiceImpl.fetch(id));
 
         return modelAndView;
     }
@@ -205,12 +208,12 @@ public class SysGgzdController extends BaseController {
      */
     @RequestMapping("/doSaveGgzdJG")
     @ResponseBody
-    public RequestResult doSaveGgzdJG(SysGgzd[] ggzdList) {
+    public RequestResult doSaveGgzdJG(@RequestBody  List<SysGgzd> ggzdList) {
         try {
-            sysGgzdService.getDao().updateIgnoreNull(ggzdList);
+            sysGgzdService.getDao().updateIgnoreNull(ggzdList.toArray());
             return requestResult(true, "");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("addOrUpdateGgzd() error! ggzdzu:[" + JSONObject.toJSONString(ggzdList) + "]", e);
             return requestResult(false, "");
         }
     }
@@ -228,7 +231,7 @@ public class SysGgzdController extends BaseController {
             sysGgzdService.deleteGgzd(id);
             return requestResult(true, "");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("deleteGgzd() error! id:[" + id + "]", e);
             return requestResult(false, "");
         }
 

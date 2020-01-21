@@ -18,7 +18,7 @@ function add() {
 	     }else{    
 		var json = mini.encode(o);
 		$.ajax({
-					url : base + "sys/ggzd/addOrUpdateGgzdzu.nut",
+					url : base + "sys/ggzd/addOrUpdateGgzdzu.nut?idFlag="+o.idFlag,
 					type : 'post',
 					data : json,
 					dataType : 'json',

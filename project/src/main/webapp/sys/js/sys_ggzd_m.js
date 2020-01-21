@@ -252,20 +252,25 @@ function ondelete() {
 // 保存结构
 function doSaveJG() {
 	var rows = ggzdTreeGrid.getList();
-	var dataStr = '';
+
+    var ddzdSortArray = new Array();
 	for (var i = 0, l = rows.length; i < l; i++) {
 		var row = rows[i];
 		var index = ggzdTreeGrid.indexOf(row);
-		dataStr += "{sortNum:'" + index + "',id:'" + row.id + "',pId:'" + row.pId + "'},";
+
+		var obj ={};
+		obj.sortNum=""+index;
+        obj.id=""+row.id;
+        obj.pId= ""+row.pId;
+        ddzdSortArray.push(obj)
 	}
 	$.ajax({
 				type : "POST",
 				url : base + "sys/ggzd/doSaveGgzdJG.nut",
-				data : {
-					ggzdList : "[" + dataStr.substring(0, dataStr.length - 1) + "]"
-				},
+				data :  mini.encode(ddzdSortArray),
         		contentType : "application/json",
 				dataType : 'json',
+       			 cache : false,
 				success : function(data) {
 					if (data.success) {
 						mini.alert("操作成功!!");
