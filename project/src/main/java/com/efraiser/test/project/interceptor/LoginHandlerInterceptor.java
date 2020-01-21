@@ -17,10 +17,11 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         Object user = request.getSession().getAttribute(SystemConstants.SESSION_USER);
-        System.out.println("preHandle----" + user + " ::: " + request.getRequestURL());
-
         request.getSession().setAttribute("base", LocalConfig.getInstance().getProjectName());
         if (user == null) {
+
+            System.out.println("preHandle----" + user + " ::: " + request.getRequestURL());
+
             request.setAttribute("msg", "无权限请先登录");
             // 获取request返回页面到登录页
             response.sendRedirect(request.getContextPath() + "/loginPage");
@@ -35,7 +36,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         request.getSession().setAttribute("base", LocalConfig.getInstance().getProjectName());
         Object user = request.getSession().getAttribute(SystemConstants.SESSION_USER);
-        System.out.println("postHandle----" + user + " ::: " + request.getRequestURL());
+      //  System.out.println("postHandle----" + user + " ::: " + request.getRequestURL());
 
     }
 
@@ -44,7 +45,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         Object user = request.getSession().getAttribute(SystemConstants.SESSION_USER);
         request.getSession().setAttribute("base", LocalConfig.getInstance().getProjectName());
-        System.out.println("afterCompletion----" + user + " ::: " + request.getRequestURL());
+      //  System.out.println("afterCompletion----" + user + " ::: " + request.getRequestURL());
     }
 
 }

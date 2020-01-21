@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +31,6 @@ import java.util.Map;
 /**
  * 系统登录action
  *
- * @author efraiser.xiaxiaofeng
  */
 @Controller
 public class LoginController extends BaseController{
@@ -95,8 +96,6 @@ public class LoginController extends BaseController{
     }
 
 
-
-
     /**
      * 用户登录
      *
@@ -104,13 +103,11 @@ public class LoginController extends BaseController{
      * @throws Exception
      */
     @RequestMapping("/doLogin")
-    public ModelAndView doLogin(SysUser user, HttpServletRequest req) {
+    public void doLogin(SysUser user, HttpServletRequest req, HttpServletResponse response) throws IOException {
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
         if (StrUtil.isNull(user.getUserId())) {
-
-            return modelAndView;
+              response.sendRedirect(req.getContextPath() + "/loginPage");
+              return;
         }
 
         HttpSession session = req.getSession();
@@ -127,16 +124,19 @@ public class LoginController extends BaseController{
         if (us == null) {
             req.setAttribute("loginMsg", "用户名或密码错误!!!!");
             req.setAttribute("userId", user.getUserId());
-            return modelAndView;
+            response.sendRedirect(req.getContextPath() + "/loginPage");
+            return;
         } else {
             if ("0".equals(us.getStatus())) {
                 req.setAttribute("loginMsg", "用户账号被冻结!!");
                 req.setAttribute("userId", user.getUserId());
-                return modelAndView;
+                response.sendRedirect(req.getContextPath() + "/loginPage");
+                return;
             } else if (!cddsv(us.getdDate())) {
                 req.setAttribute("loginMsg", "账号到期!!");
                 req.setAttribute("userId", user.getUserId());
-                return modelAndView;
+                response.sendRedirect(req.getContextPath() + "/loginPage");
+                return;
             } /*else if (!cdipsv(us, req)) {
 				req.setAttribute("loginMsg", "账号不在登录范围内!!");
 				req.setAttribute("userId", user.getUserId());
@@ -182,25 +182,7 @@ public class LoginController extends BaseController{
                 }
                 //=========================================
 
-
                 jgyRecordService.loginOpJgyRecord(us.getUserId());
-                /*
-                 * JgyRecord
-                 * record=jgyRecordDao.fetchx(us.getUserId(),DateUtil.getNow
-                 * ("yyyyMM")); if(record==null){ List<String>
-                 * list=sysUserDao.findSysUserbyRole("2"); for(String id:list){
-                 * record=new
-                 * JgyRecord(id,DateUtil.getNow("yyyyMM"),"0","0","0");
-                 * jgyRecordDao.rdTableInfoService().insert(record); }
-                 *
-                 * } JgyRecord
-                 * record1=jgyRecordDao.fetchx(us.getUserId(),DateUtil
-                 * .getNow("yyyyMM")); int count
-                 * =Integer.parseInt(record1.getLoginCount());
-                 * record1.setLoginCount(String.valueOf(count+1));
-                 * jgyRecordDao.rdTableInfoService().update(record1);
-                 */
-
             }
 
 
@@ -210,8 +192,8 @@ public class LoginController extends BaseController{
             if (mainJsp == null || "null".equals(mainJsp) || mainJsp.length() <= 1) {
                 mainJsp = "main";
             }
-            modelAndView.setViewName(mainJsp);
-            return modelAndView;
+            response.sendRedirect(req.getContextPath() );
+            return;
         }
     }
 
