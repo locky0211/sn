@@ -10,11 +10,12 @@ import com.efraiser.test.db.service.sys.sysjsgl.SysJsglService;
 import com.efraiser.test.db.service.sys.sysjsgl.impl.SysJsglServiceImpl;
 import com.efraiser.test.db.service.sys.sysjsqx.SysJsQxService;
 import com.efraiser.test.common.util.GridQueryPageResult;
-import com.efraiser.test.db.service.sys.sysjsqx.impl.SysJsQxServiceImpl;
+import com.efraiser.test.project.vo.AddOrUpdateJsVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -109,14 +110,16 @@ public class SysJsglController extends BaseController {
     /**
      * 添加或跟新
      *
-     * @param jsQxs   角色所对应的权限集合
-     * @param sysJsgl 角色对象
-     * @param flag    添加或者跟新标识
      * @return
      */
     @RequestMapping("/addOrUpdateJsgl")
     @ResponseBody
-    public RequestResult addOrUpdateJsgl(List<SysJsQx> jsQxs, SysJsgl sysJsgl, String flag) {
+    public RequestResult addOrUpdateJsgl(@RequestBody AddOrUpdateJsVo addOrUpdateJsVo) {
+
+        List<SysJsQx> jsQxs = addOrUpdateJsVo.getJsQxs();//角色所对应的权限集合
+        SysJsgl sysJsgl= addOrUpdateJsVo.getSysJsgl();//角色对象
+        String flag = addOrUpdateJsVo.getFlag();//添加或者跟新标识
+
         try {
             sysJsglService.addOrUpdateJsgl(jsQxs, sysJsgl, flag);
             return requestResult(true, "");

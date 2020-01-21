@@ -15,23 +15,34 @@ function onAdd() {
 	if (form.isValid()) {
 		var nodes = mini.get('qxTreeGrid').getCheckedNodes(true);
 
-		// 角色信息 jsonStr
-		var sysJsJsonStr = '{"jsId":"' + obj.jsId + '","jsName":"' + obj.jsName + '","jsDescription":"' + obj.jsDescription + '","jsStatus":"'
-				+ obj.jsStatus + '"}';
-		var nodesJsonStr = '';
-		// 权限 jsonStr
+		// 角色信息
+		var sysJsJsonObj={};
+        sysJsJsonObj.jsId =""+obj.jsId;
+        sysJsJsonObj.jsName =""+obj.jsName;
+        sysJsJsonObj.jsDescription =""+obj.jsDescription;
+        sysJsJsonObj.jsStatus =""+obj.jsStatus;
+
+
+        var nodesJsonArray = new Array();
+		// 权限 json
 		for (var i = 0; i < nodes.length; i++) {
 			var node = nodes[i];
-			nodesJsonStr += '{"jId":"' + obj.jsId + '","qId":"' + node.qxId + '"},';
+            var nodeObj ={};
+            nodeObj.jId=""+obj.jsId;
+            nodeObj.qId=""+node.qxId;
+
+            nodesJsonArray.push(nodeObj);
 		}
-		nodesJsonStr = '[' + nodesJsonStr.substring(0, nodesJsonStr.length - 1) + ']';
-		var jsonString = '';
-		jsonString = '{"jsQxs":' + nodesJsonStr + ',"sysJsgl":' + sysJsJsonStr;
+
+        var jsonObj ={};
+        jsonObj.jsQxs=nodesJsonArray;
+        jsonObj.sysJsgl=sysJsJsonObj;
+
 		// 是否是编辑
 		if ($('#flag').val() != '') {
-			jsonString += ',"flag":' + 0;
+            jsonObj.flag = "0";
 		}
-		jsonString += '}';
+
 		mini.mask({
 					el : document.body,
 					cls : 'mini-mask-loading',
@@ -40,9 +51,10 @@ function onAdd() {
 		$.ajax({
 					type : 'POST',
 					dataType : 'json',
+            		contentType : "application/json",
 					url : base + 'sys/jus/addOrUpdateJsgl.nut',
 					async : false,
-					data : jsonString,
+					data :  mini.encode(jsonObj),
 					success : function(text) {
 						if (text.success) {
 							mini.alert('操作成功!!', '提醒', function() {

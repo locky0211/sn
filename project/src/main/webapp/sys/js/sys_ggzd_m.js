@@ -262,7 +262,7 @@ function doSaveJG() {
 		obj.sortNum=""+index;
         obj.id=""+row.id;
         obj.pId= ""+row.pId;
-        ddzdSortArray.push(obj)
+        ddzdSortArray.push(obj);
 	}
 	$.ajax({
 				type : "POST",
