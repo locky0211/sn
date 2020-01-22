@@ -3,7 +3,12 @@ package com.efraiser.test.db.service.sys.cacheinfo;
 import com.efraiser.test.db.model.sys.CacheInfo;
 import com.efraiser.test.db.service.BaseService;
 
-public interface CacheInfoService<T> extends BaseService  {
+import java.util.List;
+
+public interface CacheInfoService extends BaseService  {
+
+
+    void doCacheInfoInit( List<String> bl);
 
     /**
      * 执行某一缓存方法
@@ -15,4 +20,10 @@ public interface CacheInfoService<T> extends BaseService  {
 
 
      int count(String beanName);
+
+
+    Object getCacheInfoList(String beanName);
+
+
+    void addOrUpdateCacheInfo(CacheInfo cInfo);
 }

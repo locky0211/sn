@@ -11,6 +11,7 @@ import com.efraiser.test.db.service.cache.CacheInterface;
 import com.efraiser.test.db.service.cache.CommonCache;
 import com.efraiser.test.db.service.sys.cacheinfo.CacheInfoService;
 import org.nutz.dao.Cnd;
+import org.nutz.dao.sql.Criteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CacheInfoServiceImpl extends BaseServiceImpl<CacheInfo> implements CacheInfoService<CacheInfo> {
+public class CacheInfoServiceImpl extends BaseServiceImpl<CacheInfo> implements CacheInfoService {
 
     private Logger logger = LoggerFactory.getLogger(CacheInfoServiceImpl.class);
+
+
+    @Override
+    public void doCacheInfoInit(List<String> bl) {
+        List<CacheInfo> cacheInfos = query(Cnd.where("beanName", "IN", bl).asc("sortNum"), null);
+        for (CacheInfo cacheInfo : cacheInfos) {
+            doCacheInit(cacheInfo);
+        }
+    }
 
     /**
      * 执行某一缓存方法
@@ -47,8 +57,7 @@ public class CacheInfoServiceImpl extends BaseServiceImpl<CacheInfo> implements 
                 cInfo.setErrorMsg("未在ioc中检测到实例对象");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            logger.debug("执行 {} 的对象init方法时,出现异常!!{}..", cInfo.getBeanName(), e.getLocalizedMessage());
+            logger.debug("执行 {} 的对象init方法时,出现异常!!{} beanName:[" + cInfo.getBeanName() + "]", e);
             cInfo.setErrorMsg("执行init出现异常!!");
         }
         this.dao().update(cInfo);
@@ -59,4 +68,24 @@ public class CacheInfoServiceImpl extends BaseServiceImpl<CacheInfo> implements 
         return super.count(Cnd.where("beanName", "=", StrUtil.trim(beanName)));
     }
 
+    @Override
+    public Object getCacheInfoList(String beanName) {
+
+        Criteria criteria = Cnd.cri();
+        if (StrUtil.isNotNull(beanName)) {
+            criteria.where().and("BEAN_NAME", "LIKE", "%" + beanName + "%");
+        }
+        criteria.getOrderBy().asc("SORT_NUM");
+        return query(criteria, null);
+    }
+
+    @Override
+    public void addOrUpdateCacheInfo(CacheInfo cacheInfo) {
+        if (StrUtil.isNotNull(cacheInfo.getFlag())) {// flag不为空，则为更新操作
+            dao().update(cacheInfo);
+        } else {
+            dao().fastInsert(cacheInfo);
+        }
+        doCacheInit(cacheInfo);// 初始化缓存操作
+    }
 }

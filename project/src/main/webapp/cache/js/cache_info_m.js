@@ -123,16 +123,22 @@ function del(row_uid) {
 
 function doSaveCacheJG() {
 	var rows = cacheInfoGrid.getData();
-	var dataStr = '';
+
+    var sortArray = new Array();
 	for (var i = 0, l = rows.length; i < l; i++) {
 		var row = rows[i];
 		var index = bmglgrid.indexOf(row);
-		dataStr += "{sortNum:'" + index + "',beanName:'" + row.beanName + "'},";
+
+        var obj ={};
+        obj.sortNum=""+index;
+        obj.beanName=""+row.beanName;
+        sortArray.push(obj);
 	}
 	$.ajax({
 				type : "POST",
 				url : base + "cache/doSaveCacheJG.nut",
-				data : "[" + dataStr.substring(0, dataStr.length - 1) + "]",
+				data :mini.encode(sortArray),
+        		contentType : "application/json",
 				dataType : 'json',
 				success : function(data) {
 					if (data.success) {
