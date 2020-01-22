@@ -5,7 +5,7 @@ import com.efraiser.test.db.service.BaseService;
 
 import java.util.List;
 
-public interface SysGgzdService<T> extends BaseService {
+public interface SysGgzdService extends BaseService {
 
 
     /**

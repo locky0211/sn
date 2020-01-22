@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Service
-public class SysGgzdServiceImpl extends BaseServiceImpl<SysGgzd> implements SysGgzdService<SysGgzd> {
+public class SysGgzdServiceImpl extends BaseServiceImpl<SysGgzd> implements SysGgzdService {
 
 
     @Autowired

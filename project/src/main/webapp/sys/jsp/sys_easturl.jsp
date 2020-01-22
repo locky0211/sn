@@ -7,7 +7,7 @@
 <%@include file="/common/quote/boot.html"%>
 <script type="text/javascript" src="${base }/sys/js/sys_easturl.js"></script>
 <script>
-	var flag = '${param.flag}'
+	var flag = '${flag}'
 </script>
 </head>
 <body>

@@ -25,7 +25,7 @@ function onRenderer(e) {
 function edit(e) {
 	var e = formulaGrid.getSelected();
 	mini.open({
-		url : base + 'sys/easturl/getEastUrlPageByNo.nut?no=' + e.brNo + '&page=/sys/jsp/sys_easturl.jsp?flag=2',
+		url : base + 'sys/easturl/getEastUrlPageByNo.nut?no=' + e.brNo + '&page=/sys/jsp/sys_easturl.jsp&flag=2',
 		title : 'EAST数据库信息配置',
 		width : 450,
 		height : 350,

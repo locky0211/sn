@@ -16,6 +16,7 @@ function onSave() {
 				dataType : 'json',
 				url : base + 'sys/easturl/addEastUrl.nut',
 				data : json,
+                contentType : "application/json",
 				success : function(text) {
 						mini.alert(text.data, '提醒', function() {
 							CloseWindow("ok");
@@ -34,6 +35,7 @@ function onSave() {
 				dataType : 'json',
 				url : base + 'sys/easturl/updateEastUrl.nut',
 				data : json,
+                contentType : "application/json",
 				success : function(text) {
 					mini.alert(text.data, '提醒', function() {
 						CloseWindow("ok");
