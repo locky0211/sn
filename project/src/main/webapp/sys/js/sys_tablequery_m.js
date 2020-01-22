@@ -86,7 +86,6 @@ function doReportImport() {
 			return false;
 		} else {
 			var o = form.getData(true);
-			var json = mini.encode(o);
 			mini.mask({
 						el : document.body,
 						cls : 'mini-mask-loading',
@@ -96,7 +95,10 @@ function doReportImport() {
 						url : base + 'sys/table/query/doReportImport.nut',
 						type : 'post',
 						dataType : 'json',
-						data : json,
+						data : {
+                            excelFile:o.excelFile,
+                            excelFilePath:o.excelFilePath
+						},
 						cache : false,
 						success : function(text) {
 							if (text.success) {

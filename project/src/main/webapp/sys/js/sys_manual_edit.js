@@ -39,10 +39,11 @@ function update() {
 				html : '信息处理中...'
 			});
 			$.ajax({
-				url : base + 'sys/manual/addOrUpdateManual.nut',
+				url : base + 'sys/manual/addOrUpdateManual.nut?fg='+o.fg,
 				type : 'post',
 				data : json,
 				dataType : 'json',
+                contentType : "application/json",
 				cache : false,
 				success : function(text) {
 					if (text.success) {

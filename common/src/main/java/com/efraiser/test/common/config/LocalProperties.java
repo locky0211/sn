@@ -27,6 +27,8 @@ public class LocalProperties {
 
     private String ef;
 
+    private String tempStringPath;
+
     //缓存配置
     private String cacheNameStr;
     private Set<String> getCacheNameSet = new HashSet<>();
@@ -111,6 +113,14 @@ public class LocalProperties {
         this.cacheNameStr = cacheNameStr;
     }
 
+
+    public String getTempStringPath() {
+        return tempStringPath;
+    }
+
+    public void setTempStringPath(String tempStringPath) {
+        this.tempStringPath = tempStringPath;
+    }
 
     /**
      * 判断是否使用缓存

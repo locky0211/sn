@@ -18,7 +18,7 @@ spring:
      driver-class-name: com.ibm.db2.jcc.DB2Driver
      username: sam
      password: 123456
-     url: jdbc:db2://192.168.41.151:50000/sam
+     url: jdbc:db2://192.168.159.137:50000/sam
      type: com.alibaba.druid.pool.DruidDataSource
      druid:
        # 初始连接数
@@ -72,6 +72,7 @@ mine:
     systemBrNo:
     ef: true
     cacheNameStr:     #模块使用缓存(跟CACHE_INFO表对应) eg：sysBmglCache,sysGgzdCache
+    tempStringPath: d:/upload/  #系统临时目录
 
 
 
