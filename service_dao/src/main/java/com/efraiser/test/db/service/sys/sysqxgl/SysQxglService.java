@@ -5,7 +5,7 @@ import com.efraiser.test.db.service.BaseService;
 
 import java.util.List;
 
-public interface SysQxglService <T> extends BaseService {
+public interface SysQxglService extends BaseService {
 
 
     boolean checkQxGl(String qxId, String column);

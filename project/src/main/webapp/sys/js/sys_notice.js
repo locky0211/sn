@@ -17,21 +17,31 @@ function add() {
 	var sysNoticeForm = new mini.Form("#sysNoticeForm");
 	sysNoticeForm.validate();
 	if (sysNoticeForm.isValid()) {
+
 		mini.mask({
 					el : document.body,
 					cls : 'mini-mask-loading',
 					html : '信息提交中...'
 				});
 		editor.sync();// 编辑器同步
+
+        var obj ={};
+        obj.id = mini.get('id').getValue();
+        obj.title = mini.get('title').getValue();
+        obj.content = $('#editor_id').val();
+
 		$.ajax({
 					url : base + "sys/notice/addOrUpdateSysNotice.nut",
 					type : 'post',
-					data : {
-						id : mini.get('id').getValue(),
-						title : mini.get('title').getValue(),
-						content : $('#editor_id').val()
-					},
+					data : mini.encode(obj),
+					// data:{
+                     //    id : mini.get('id').getValue(),
+                     //    title : mini.get('title').getValue(),
+                     //    content : $('#editor_id').val()
+					// },
+
 					dataType : 'json',
+            		contentType : "application/json",
 					cache : false,
 					success : function(text) {
 						if (text.success) {

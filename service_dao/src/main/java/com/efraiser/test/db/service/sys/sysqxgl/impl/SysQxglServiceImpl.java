@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SysQxglServiceImpl extends BaseServiceImpl<SysQxgl> implements SysQxglService<SysQxgl> {
+public class SysQxglServiceImpl extends BaseServiceImpl<SysQxgl> implements SysQxglService {
 
 
     @Override

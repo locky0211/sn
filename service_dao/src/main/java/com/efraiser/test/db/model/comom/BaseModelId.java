@@ -10,8 +10,7 @@ import java.io.Serializable;
 /**
  * UUID主键超类
  * 
- * @author efraiser.xiaxiaofeng
- * 
+ *
  */
 public abstract class BaseModelId implements Serializable {
 	private static final long serialVersionUID = 1L;
