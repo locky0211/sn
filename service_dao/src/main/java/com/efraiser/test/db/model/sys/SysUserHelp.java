@@ -11,7 +11,7 @@ import org.nutz.dao.entity.annotation.Table;
  * 
  */
 @SuppressWarnings("serial")
-@Table("SAM.SYS_USER_HELP")
+@Table("SYS_USER_HELP")
 public class SysUserHelp extends BaseModelId {
 	@Column("TITLE")
 	private String title;

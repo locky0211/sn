@@ -4,7 +4,7 @@ import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Name;
 import org.nutz.dao.entity.annotation.Table;
 
-@Table("SAM.SYS_USER_CHECK_TIME")
+@Table("SYS_USER_CHECK_TIME")
 public class SysUserCheckTime {
 	@Name
 	@Column("USER_ID")

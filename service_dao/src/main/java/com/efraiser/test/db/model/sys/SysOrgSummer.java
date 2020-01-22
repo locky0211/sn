@@ -17,7 +17,7 @@ import org.nutz.dao.entity.annotation.Table;
  * @modify log:
  */
 @SuppressWarnings("serial")
-@Table("SAM.SYS_ORG_SUMMER")
+@Table("SYS_ORG_SUMMER")
 public class SysOrgSummer extends BaseModelId {
 	
 	@Column("SUM_CODE")
