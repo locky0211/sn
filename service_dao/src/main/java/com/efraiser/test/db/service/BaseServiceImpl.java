@@ -1,10 +1,7 @@
 package com.efraiser.test.db.service;
 
 import com.efraiser.test.db.service.common.IdEntityService;
-import org.nutz.dao.Condition;
-import org.nutz.dao.Dao;
-import org.nutz.dao.SqlNotFoundException;
-import org.nutz.dao.Sqls;
+import org.nutz.dao.*;
 import org.nutz.dao.entity.MappingField;
 import org.nutz.dao.pager.Pager;
 import org.nutz.dao.sql.Sql;
@@ -363,5 +360,35 @@ public abstract class BaseServiceImpl<T> extends IdEntityService<T> {
         });
         dao().execute(sql);
         return sqlMap;
+    }
+
+
+    /**
+     * in 查询
+     * @param fieldName
+     * @param values
+     * @return
+     */
+    public List<T> queryByIn(String fieldName, List<String> values) {
+
+        return query(Cnd.where(fieldName, "IN", values), null);
+    }
+
+    /**
+     *  in 查询
+     * @param fieldName
+     * @param values
+     * @param sortFieldFname
+     * @param asc
+     * @return
+     */
+    public List<T> queryByIn(String fieldName, List<String> values, String sortFieldFname, boolean asc) {
+
+        if (asc) {
+            return query(Cnd.where(fieldName, "IN", values).asc(sortFieldFname), null);
+        } else {
+            return query(Cnd.where(fieldName, "IN", values).desc(sortFieldFname), null);
+        }
+
     }
 }

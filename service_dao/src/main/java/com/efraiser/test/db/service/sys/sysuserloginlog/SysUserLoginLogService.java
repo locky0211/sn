@@ -5,7 +5,7 @@ import com.efraiser.test.db.service.BaseService;
 
 
 
-public interface SysUserLoginLogService<SysUserLoginLog> extends BaseService {
+public interface SysUserLoginLogService extends BaseService {
 
 
 

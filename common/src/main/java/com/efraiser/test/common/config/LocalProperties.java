@@ -29,6 +29,8 @@ public class LocalProperties {
 
     private String tempStringPath;
 
+    private String reportExcelTempletPath;
+
     //缓存配置
     private String cacheNameStr;
     private Set<String> getCacheNameSet = new HashSet<>();
@@ -120,6 +122,15 @@ public class LocalProperties {
 
     public void setTempStringPath(String tempStringPath) {
         this.tempStringPath = tempStringPath;
+    }
+
+
+    public String getReportExcelTempletPath() {
+        return reportExcelTempletPath;
+    }
+
+    public void setReportExcelTempletPath(String reportExcelTempletPath) {
+        this.reportExcelTempletPath = reportExcelTempletPath;
     }
 
     /**

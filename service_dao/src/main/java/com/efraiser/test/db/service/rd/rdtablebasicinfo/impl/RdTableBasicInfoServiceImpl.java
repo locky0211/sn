@@ -11,8 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RdTableBasicInfoServiceImpl extends BaseServiceImpl<RdTableBasicInfo> implements RdTableBasicInfoService<RdTableBasicInfo> {
-
+public class RdTableBasicInfoServiceImpl extends BaseServiceImpl<RdTableBasicInfo> implements RdTableBasicInfoService {
 
     @Override
     public void updateMaxVserionNo(String tableId) {
@@ -36,16 +35,15 @@ public class RdTableBasicInfoServiceImpl extends BaseServiceImpl<RdTableBasicInf
     }
 
     @Override
-    public List<RdTableBasicInfo> getAll()
-    {
+    public List<RdTableBasicInfo> getAll() {
         String sqlStr = "SELECT * FROM RD_TABLE_BASIC_INFO";
-        List<RdTableBasicInfo> list=super.getListBySql(sqlStr, null, null);
+        List<RdTableBasicInfo> list = super.getListBySql(sqlStr, null, null);
         return list;
     }
 
     @Override
     public void delAll() {
-        String sqlStr="DELETE FROM RD_TABLE_BASIC_INFO";
+        String sqlStr = "DELETE FROM RD_TABLE_BASIC_INFO";
         Sql sql = Sqls.create(sqlStr);
         dao().execute(sql);
     }

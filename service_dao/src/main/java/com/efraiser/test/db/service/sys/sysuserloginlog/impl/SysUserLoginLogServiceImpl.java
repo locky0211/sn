@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class SysUserLoginLogServiceImpl extends BaseServiceImpl<SysUserLoginLog> implements SysUserLoginLogService<SysUserLoginLog> {
+public class SysUserLoginLogServiceImpl extends BaseServiceImpl<SysUserLoginLog> implements SysUserLoginLogService {
 
     private Logger logger = LoggerFactory.getLogger(SysUserLoginLogServiceImpl.class);
 

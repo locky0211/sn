@@ -35,10 +35,11 @@ function onAdd() {
 						html : '信息处理中...'
 					});
 			$.ajax({
-						url : base + 'dy/table/addOrUpdateTableInfo.nut',
+						url : base + 'dy/table/addOrUpdateTableInfo.nut?excelFilePath='+o.excelFilePath,
 						type : 'post',
 						data : json,
 						dataType : 'json',
+                		contentType : "application/json",
 						cache : false,
 						success : function(text) {
 							if (text.success) {

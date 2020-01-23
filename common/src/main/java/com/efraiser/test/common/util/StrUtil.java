@@ -1,6 +1,8 @@
 package com.efraiser.test.common.util;
 
 
+import com.efraiser.test.common.util.nutz.Strings;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +14,7 @@ import java.util.regex.Pattern;
  * 字符串辅助类
  * 
  */
-public class StrUtil extends Strings{
+public class StrUtil extends Strings {
 
 	public static boolean isNull(String str) {
 		if (str == null || str.trim().length() == 0 || "null".equals(str)) {

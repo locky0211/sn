@@ -5,7 +5,7 @@ import com.efraiser.test.db.service.BaseService;
 
 import java.util.List;
 
-public interface RdTableBasicInfoService<T> extends BaseService {
+public interface RdTableBasicInfoService extends BaseService {
 
     void updateMaxVserionNo(String tableId);
 
