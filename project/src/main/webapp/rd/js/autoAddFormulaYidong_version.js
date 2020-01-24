@@ -71,9 +71,23 @@ function add(){
 					html : '处理中...'
 				});
 		$.ajax({
-					url : base + 'rd/check/wave/autoAddFormulaYidongVersion.nut?jsonstr='+jsonstr+'&tabCode='+tabCode+'&checkRisk='+checkRisk+'&reportRate='+reportRate+'&leftValue='+leftValue+'&rightValue='+rightValue+'&thisVersion='+thisVersion+'&lastVersion='+lastVersion+'&checkBrno='+checkBrno+'&cUser='+cUser+'&reportDate='+reportDate+'&elementNew='+elementNew,
+					url : base + 'rd/check/wave/autoAddFormulaYidongVersion.nut?',
 					type : 'post',
 					dataType : 'json',
+					data:{
+                        jsonstr:jsonstr,
+                        tabCode:tabCode,
+						checkRisk:checkRisk,
+						reportRate:reportRate,
+						leftValue:leftValue,
+						rightValue:rightValue,
+						thisVersion:thisVersion,
+						lastVersion:lastVersion,
+						checkBrno:checkBrno,
+						cUser:cUser,
+						reportDate:reportDate,
+						elementNew:elementNew
+					},
 					cache : false,
 					success : function(text) {
 						if (text.success) {

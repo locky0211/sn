@@ -14,6 +14,7 @@ function add() {
 					url : base + 'dy/check/wave/addOrUpdateCheckFormula.nut',
 					type : 'post',
 					data : json,
+            		contentType : "application/json",
 					dataType : 'json',
 					cache : false,
 					success : function(text) {
