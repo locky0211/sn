@@ -22,6 +22,7 @@ function add() {
 					type : 'post',
 					data : json,
 					dataType : 'json',
+            		contentType : "application/json",
 					cache : false,
 					success : function(text) {
 						if (text.success) {

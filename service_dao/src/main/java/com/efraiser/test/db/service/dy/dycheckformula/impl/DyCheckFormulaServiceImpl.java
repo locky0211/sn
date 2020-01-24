@@ -20,6 +20,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Sqls;
 import org.nutz.dao.pager.Pager;
+import org.nutz.dao.sql.Criteria;
 import org.nutz.dao.sql.Sql;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -661,4 +662,127 @@ public class DyCheckFormulaServiceImpl extends BaseServiceImpl<DyCheckFormula> i
     }
 
 
+    @Override
+    public void rollbackCheckFormula(String date) {
+        dao().updateIgnoreNull(getListObjectBySql("SELECT ID,TABCODE,CHECK_FORMULA,START_DATE,END_DATE,VALID_FLAG,CHECK_RISK,DEVIATION_VALUE,CHECK_FORMULA_MARK,AUTO_COMPUTE_FLAG,C_USER,'" + DateUtil.getNow(DateUtil.FORMAT_LONG) + "' AS UPDATE_DATE FROM DY.DY_CHECK_FORMULA_TEMP WHERE UPDATE_DATE='" + date + "'", DyCheckFormula.class));
+    }
+
+    @Override
+    public GridQueryPageResult getDyCheckFormulaList(String checkArea, String cUser, String tabcode, String checkFormula, String vFlag, String formulaType, int pageIndex, int pageSize, String sortField, String sortOrder) {
+        GridQueryPageResult gqpr = new GridQueryPageResult();
+        Criteria criteria = Cnd.cri();
+        criteria.where().and("cUser", "=", cUser);
+
+
+        if (StrUtil.isNotNull(tabcode)) {
+            criteria.where().and("tabcode", "like", "%" + tabcode + "%");
+        }
+//加密前根据公式模糊搜索
+//		if (StrUtil.isNotNull(checkFormula)) {
+//			criteria.where().and("checkFormula", "like", "%" + checkFormula + "%");
+//		}
+        if (StrUtil.isNotNull(vFlag)) {
+            criteria.where().and("validFlag", "=", vFlag);
+        }
+        if (StrUtil.isNotNull(formulaType)) {
+            criteria.where().and("type", "=", formulaType);
+        } else {
+            criteria.where().and("type", "=", "1");
+        }
+        if (StrUtil.isNotNull(sortField)) {
+            if ("desc".equals(sortOrder)) {
+                criteria.getOrderBy().desc(sortField);
+            } else {
+                criteria.getOrderBy().asc(sortField);
+            }
+        }
+//加密前取数
+//		gqpr.setTotal(rdCheckFormulaDao.count(criteria));
+//		gqpr.setData(rdCheckFormulaDao.query(criteria, pager));
+
+        List<DyCheckFormula> list = query(criteria, null);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCheckFormula().contains("em_")) {
+                list.get(i).setCheckFormula(FormulaEncrypt.getFormulaDecrypt(list.get(i).getCheckFormula()));
+            }
+            if (StrUtil.isNotNull(checkFormula)) {
+                if (list.get(i).getCheckFormula().contains("" + checkFormula + "")) {
+                } else {
+                    list.remove(list.get(i));
+                    i--;
+                }
+            }
+        }
+        List<DyCheckFormula> lists = new ArrayList<DyCheckFormula>();
+        gqpr.setTotal(list.size());
+        for (int j = pageIndex * pageSize; j < (pageIndex + 1) * pageSize; j++) {
+            if (j < list.size()) {
+                lists.add(list.get(j));
+            }
+        }
+        gqpr.setData(lists);
+
+        return gqpr;
+    }
+
+    @Override
+    public GridQueryPageResult getDyCheckFormulaListArea(String cUser, String checkArea, String tabcode, String checkFormula, String vFlag, String formulaType, int pageIndex, int pageSize, String sortField, String sortOrder) {
+        GridQueryPageResult gqpr = new GridQueryPageResult();
+        Criteria criteria = Cnd.cri();
+        criteria.where().and("cUser", "=", cUser);
+        //校验范围区分(表内校验,表外校验)
+        if (("1".equals(checkArea))) {
+            criteria.where().and("tabcode", "not like", "%@%");
+        } else if (("2").equals(checkArea)) {
+            criteria.where().and("tabcode", "like", "%@%");
+        }
+
+        if (StrUtil.isNotNull(tabcode)) {
+            criteria.where().and("tabcode", "like", "%" + tabcode + "%");
+        }
+        //加密前根据公式模糊搜索
+        //if (StrUtil.isNotNull(checkFormula)) {
+        //	criteria.where().and("checkFormula", "like", "%" + checkFormula + "%");
+        //}
+        if (StrUtil.isNotNull(vFlag)) {
+            criteria.where().and("validFlag", "=", vFlag);
+        }
+        if (StrUtil.isNotNull(formulaType)) {
+            criteria.where().and("type", "=", formulaType);
+        } else {
+            criteria.where().and("type", "=", "1");
+        }
+        if (StrUtil.isNotNull(sortField)) {
+            if ("desc".equals(sortOrder)) {
+                criteria.getOrderBy().desc(sortField);
+            } else {
+                criteria.getOrderBy().asc(sortField);
+            }
+        }
+        //加密前取数据
+        //gqpr.setTotal(rdCheckFormulaDao.count(criteria));
+        //gqpr.setData(rdCheckFormulaDao.query(criteria, pager));
+        List<DyCheckFormula> list = query(criteria, null);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCheckFormula().contains("em_")) {
+                list.get(i).setCheckFormula(FormulaEncrypt.getFormulaDecrypt(list.get(i).getCheckFormula()));
+            }
+            if (StrUtil.isNotNull(checkFormula)) {
+                if (list.get(i).getCheckFormula().contains("" + checkFormula + "")) {
+                } else {
+                    list.remove(list.get(i));
+                    i--;
+                }
+            }
+        }
+        List<DyCheckFormula> lists = new ArrayList<DyCheckFormula>();
+        gqpr.setTotal(list.size());
+        for (int j = pageIndex * pageSize; j < (pageIndex + 1) * pageSize; j++) {
+            if (j < list.size()) {
+                lists.add(list.get(j));
+            }
+        }
+        gqpr.setData(lists);
+        return gqpr;
+    }
 }

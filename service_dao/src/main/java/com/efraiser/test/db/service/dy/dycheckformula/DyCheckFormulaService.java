@@ -114,4 +114,12 @@ public interface DyCheckFormulaService extends BaseService {
      * @param tabCodes
      */
     List<DyCheckFormula> getCheckFormulaListByTabCodes(List<String> tabCodes, String reportDate, String cUser, String formulaType, String checkArea, String area, String brnoType);
+
+
+   void rollbackCheckFormula(String date);
+
+
+    GridQueryPageResult getDyCheckFormulaList(String checkArea, String cUser, String tabcode, String checkFormula, String vFlag, String formulaType, int pageIndex, int pageSize, String sortField, String sortOrder);
+
+    GridQueryPageResult getDyCheckFormulaListArea(String cUser, String checkArea, String tabcode, String checkFormula, String vFlag, String formulaType, int pageIndex, int pageSize, String sortField, String sortOrder);
 }

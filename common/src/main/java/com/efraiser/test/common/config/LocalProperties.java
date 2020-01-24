@@ -31,6 +31,10 @@ public class LocalProperties {
 
     private String reportExcelTempletPath;
 
+    private String rdTableExcelPath;
+
+    private String pageEditFlag;
+
     //缓存配置
     private String cacheNameStr;
     private Set<String> getCacheNameSet = new HashSet<>();
@@ -133,8 +137,27 @@ public class LocalProperties {
         this.reportExcelTempletPath = reportExcelTempletPath;
     }
 
+
+    public String getRdTableExcelPath() {
+        return rdTableExcelPath;
+    }
+
+    public void setRdTableExcelPath(String rdTableExcelPath) {
+        this.rdTableExcelPath = rdTableExcelPath;
+    }
+
+
+    public String getPageEditFlag() {
+        return pageEditFlag;
+    }
+
+    public void setPageEditFlag(String pageEditFlag) {
+        this.pageEditFlag = pageEditFlag;
+    }
+
     /**
      * 判断是否使用缓存
+     *
      * @param cacheName
      * @return
      */

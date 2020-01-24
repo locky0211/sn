@@ -139,4 +139,10 @@ public class SysOrgSummerServiceImpl extends BaseServiceImpl<SysOrgSummer> imple
         return super.getListStringBySqlStr(sql);
     }
 
+    @Override
+    public List<SysOrgSummer> getBySumCode(String sumCode) {
+        List<SysOrgSummer> sysOrgSummers= query(Cnd.where("SUM_CODE","=",sumCode), null);
+
+        return sysOrgSummers;
+    }
 }

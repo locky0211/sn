@@ -60,6 +60,15 @@
             <version>3.9</version>
         </dependency>
 
+        <dependency>
+            <groupId>de.innosystec.unrar</groupId>
+            <artifactId>java-unrar</artifactId>
+            <version>0,3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/java-unrar-0.3.jar</systemPath>
+        </dependency>
+
+
 
     </dependencies>
 
@@ -71,5 +80,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>lib/</directory>
+                <targetPath>WEB-INF/lib</targetPath>
+                <includes>
+                    <include>**/*.jar</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 </project>

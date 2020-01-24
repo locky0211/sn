@@ -117,4 +117,6 @@ public interface SysOrgSummerService extends BaseService {
 
 
     List<String> getHzjg(String gid);
+
+    List<SysOrgSummer> getBySumCode(String sumCode);
 }

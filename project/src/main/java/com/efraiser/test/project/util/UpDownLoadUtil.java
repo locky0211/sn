@@ -62,7 +62,7 @@ public class UpDownLoadUtil {
      * 上传文件保存
      * @param file 上传文件
      * @param filePath 文件保存路径
-     * @return
+     * @return fileSaveName 文件保存完整路径（eg: d:/upload/aaaaa.docx）
      * @throws IOException
      */
     public static String uploadSaveFile(MultipartFile file, String filePath) throws IOException {
@@ -73,10 +73,10 @@ public class UpDownLoadUtil {
        // String filePath = localConfig.getProperties().getTempStringPath();
 
         // 文件重命名，防止重复
-        String fileSaveName = filePath + "/" + UpDownLoadUtil.fileSaveRandomName(fileName);
+        String fileSavePathName = filePath + "/" + UpDownLoadUtil.fileSaveRandomName(fileName);
 
         // 文件对象
-        File saveFile = new File(fileSaveName);
+        File saveFile = new File(fileSavePathName);
         // 判断路径是否存在，如果不存在则创建
         if (!saveFile.getParentFile().exists()) {
             saveFile.getParentFile().mkdirs();
@@ -84,7 +84,7 @@ public class UpDownLoadUtil {
         // 保存到服务器中
         file.transferTo(saveFile);
 
-        return fileSaveName;
+        return fileSavePathName;
     }
 
 

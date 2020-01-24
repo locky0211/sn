@@ -5,6 +5,7 @@ import com.efraiser.test.db.model.rd.RdTableInfo;
 import com.efraiser.test.db.model.sys.SysBmgl;
 import com.efraiser.test.db.service.BaseServiceImpl;
 import com.efraiser.test.db.service.sys.sysbmgl.SysBmglService;
+import org.apache.commons.lang3.StringUtils;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Sqls;
 import org.nutz.dao.sql.Sql;
@@ -279,7 +280,12 @@ public class SysBmglServiceImpl extends BaseServiceImpl<SysBmgl> implements SysB
             }
         });
         this.dao().execute(sql);
-        return sql.getInt();
+        String numberStr =  sql.getString();
+        if(StringUtils.isBlank(numberStr)){
+            return 0;
+        }
+
+        return Integer.parseInt(numberStr);
     }
 
     @Override
