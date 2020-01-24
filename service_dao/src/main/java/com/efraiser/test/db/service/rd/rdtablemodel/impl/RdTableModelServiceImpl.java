@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class RdTableModelServiceImpl extends BaseServiceImpl<RdTableModel> implements RdTableModelService<RdTableModel> {
+public class RdTableModelServiceImpl extends BaseServiceImpl<RdTableModel> implements RdTableModelService {
 
     private Logger log = LoggerFactory.getLogger(RdTableModelServiceImpl.class);
 

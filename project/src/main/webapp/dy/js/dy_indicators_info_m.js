@@ -61,16 +61,24 @@ function search() {
 // 保存结构
 function saveDataRowSort() {
 	var rows = indicatorsInfoGrid.getList();
+
+    var dataArray = new Array();
 	if (rows.length > 0) {
-		var dataStr = '';
 		for (var i = 0, l = rows.length; i < l; i++) {
 			var row = rows[i];
 			dataStr += "{sortNum:'" + i + "',id:'" + row.id + "'},";
+
+            var obj ={};
+            obj.sortNum=""+i;
+            obj.id=""+row.id;
+            dataArray.push(obj);
+
 		}
 		$.ajax({
 					type : "POST",
 					url : base + "dy/indicators/doSaveIndSort.nut",
-					data : "[" + dataStr.substring(0, dataStr.length - 1) + "]",
+					data : mini.encode(dataArray),
+            		contentType : "application/json",
 					dataType : 'json',
 					success : function(data) {
 						if (data.success) {

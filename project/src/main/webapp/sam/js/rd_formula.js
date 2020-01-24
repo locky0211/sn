@@ -14,6 +14,7 @@ function onSave() {
 				dataType : 'json',
 				url : base + 'rd/formula/addOrUpdateFormula.nut',
 				data : json,
+                contentType : "application/json",
 				success : function(text) {
 					if (text) {
 						mini.alert('操作成功!!', '提醒', function() {

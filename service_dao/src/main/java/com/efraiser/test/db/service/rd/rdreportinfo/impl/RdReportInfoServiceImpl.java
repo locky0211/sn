@@ -1,4 +1,4 @@
-package com.efraiser.test.db.service.rd.rdreprotinfo.impl;
+package com.efraiser.test.db.service.rd.rdreportinfo.impl;
 
 import com.efraiser.test.common.util.StrUtil;
 import com.efraiser.test.common.vo.NutzCallbackObject;
@@ -8,7 +8,7 @@ import com.efraiser.test.db.model.rd.RdReportInfo;
 import com.efraiser.test.db.model.rd.RdTableInfo;
 import com.efraiser.test.db.service.BaseServiceImpl;
 import com.efraiser.test.db.service.cache.impl.RdTableModelCache;
-import com.efraiser.test.db.service.rd.rdreprotinfo.RdRepordService;
+import com.efraiser.test.db.service.rd.rdreportinfo.RdReportInfoService;
 import com.efraiser.test.db.service.rd.rdtablecoordversion.RdTableCoordVersionService;
 import com.efraiser.test.db.service.rd.rdtableinfo.RdTableInfoService;
 import com.efraiser.test.db.service.rd.rdtableinfo.impl.RdTableInfoServiceImpl;
@@ -30,24 +30,15 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 @Service
-public class RdRepordServiceImpl extends BaseServiceImpl<RdReportInfo> implements RdRepordService {
+public class RdReportInfoServiceImpl extends BaseServiceImpl<RdReportInfo> implements RdReportInfoService {
 
     @Autowired
     private RdTableInfoService rdTableInfoService;
-
     @Autowired
     private RdTableModelPCTService rdTableModelPCTService;
-
     @Autowired
     private RdTableCoordVersionService rdTableCoordVersionService;
 
-    public RdTableInfoService getRdTableInfoService() {
-        return rdTableInfoService;
-    }
-
-    public void setRdTableInfoService(RdTableInfoService rdTableInfoService) {
-        this.rdTableInfoService = rdTableInfoService;
-    }
 
     @Override
     public void initRdReportData(Set<String> tabCodes, String brNo, String reportDate, String tabType, String flag,
@@ -166,13 +157,14 @@ public class RdRepordServiceImpl extends BaseServiceImpl<RdReportInfo> implement
 
     }
 
-
-    private RdReportInfo getReportInfo(String tableId, String brNo, String reportDate, String dataType) {
+    @Override
+    public RdReportInfo getReportInfo(String tableId, String brNo, String reportDate, String dataType) {
         return this.fetch(Cnd.where("tableId", "=", tableId).and("brNo", "=", brNo).and("reportDate", "=", reportDate)
                 .and("dataType", "=", dataType));
     }
 
-    private RdReportInfo getReportInfoSummary(String tableId, String brNo, String reportDate, String dataType) {
+    @Override
+    public RdReportInfo getReportInfoSummary(String tableId, String brNo, String reportDate, String dataType) {
         String sqlStr = "SELECT * FROM RD_REPORT_INFO_SUMMARY WHERE TABLE_ID='" + tableId + "' AND BR_NO='" + brNo
                 + "'AND REPORT_DATE='" + reportDate + "' AND DATA_TYPE='" + dataType + "'";
         Sql sql = Sqls.create(sqlStr);
@@ -228,7 +220,6 @@ public class RdRepordServiceImpl extends BaseServiceImpl<RdReportInfo> implement
         sql.params().set("reportDate", reportDate);
         sql.params().set("tabType", tabType);
         sql.setCallback(new SqlCallback() {
-            @Override
             public Object invoke(Connection conn, ResultSet rs, Sql sql) throws SQLException {
                 if (rs != null && rs.next()) {
                     return rs.getInt(1);
@@ -241,21 +232,11 @@ public class RdRepordServiceImpl extends BaseServiceImpl<RdReportInfo> implement
         return sql.getInt();
     }
 
-    /**
-     * 获取机构某个日期下某报表数
-     *
-     * @param brNo
-     * @param reportDate
-     * @param tabType
-     * @param tabCodes
-     * @return
-     */
     @Override
     public int getReportInfoCount(String brNo, String reportDate, String tableId) {
         return super.count(
                 Cnd.where("brNo", "=", brNo).and("reportDate", "=", reportDate).and("tableId", "=", tableId));
     }
-
 
     @Override
     public void saveRdReportInfoForReplace(String reportId, List<RdReportData> rds) throws Exception {
@@ -396,7 +377,6 @@ public class RdRepordServiceImpl extends BaseServiceImpl<RdReportInfo> implement
         sql.params().set("brNo", brNo);
         sql.params().set("reportDate", reportDate);
         sql.setCallback(new SqlCallback() {
-            @Override
             public Object invoke(Connection conn, ResultSet rs, Sql sql) throws SQLException {
                 if (rs != null && rs.next()) {
                     return rs.getInt(1);
@@ -520,6 +500,7 @@ public class RdRepordServiceImpl extends BaseServiceImpl<RdReportInfo> implement
         }
 
     }
+
 
     @Override
     public Map<String, String> initRdReportDataForYD_JG(final String tabCode, String brNo, String reportDate,
@@ -884,8 +865,7 @@ public class RdRepordServiceImpl extends BaseServiceImpl<RdReportInfo> implement
             nco.setField1("~");
         }
 
-
-        RdTableInfoServiceImpl rdTableInfoServiceImpl = (RdTableInfoServiceImpl) rdTableInfoService;
+        RdTableInfoServiceImpl rdTableInfoServiceImpl = (RdTableInfoServiceImpl)rdTableInfoService;
 
         for (String tabCode : tabCodes) {
             RdTableInfo tableInfo = null;
@@ -1159,25 +1139,5 @@ public class RdRepordServiceImpl extends BaseServiceImpl<RdReportInfo> implement
         } else {
             return null;
         }
-    }
-
-    @Override
-    public String delParentNode(String brNos) {
-        String brNo = "";
-        String brnos[] = brNos.split(",");
-        for (int i = 0; i < brnos.length; i++) {
-            int num = CheckParent(brnos[i]);
-            if (num == 0) {
-                if (i == brnos.length - 1) {
-                    brNo += "" + brnos[i] + "";
-                } else {
-                    brNo += "" + brnos[i] + ",";
-                }
-            }
-
-        }
-
-        return brNo;
-
     }
 }

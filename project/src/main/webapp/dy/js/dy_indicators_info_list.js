@@ -24,8 +24,8 @@ function edit() {
 	var row = indInfoGrid.getSelected();
 	if (row) {
 		mini.open({
-					url : base + "dy/indicators/toEditIndicatorsInfo.nut?id=" + row.id + "&page=/dy/jsp/dy_indicators_info.jsp?bId="
-							+ mini.get('pId').getValue(),
+					url : base + "dy/indicators/toEditIndicatorsInfo.nut?id=" + row.id + "&bId="
+							+ mini.get('pId').getValue()+"&page=/dy/jsp/dy_indicators_info.jsp",
 					title : '指标公式修改',
 					iconCls : 'icon-edit',
 					width : 580,

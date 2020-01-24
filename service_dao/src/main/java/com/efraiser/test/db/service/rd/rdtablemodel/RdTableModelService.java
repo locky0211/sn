@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
-public interface RdTableModelService<T> extends BaseService {
+public interface RdTableModelService extends BaseService {
 
 
     List<RdTableModel> resolveTableExcelTemplate(String tableId, RdTableInfo tableInfo, String excelFilePath, List<RdTableModelPCT> tableModelPCTs, List<String> formulaList,

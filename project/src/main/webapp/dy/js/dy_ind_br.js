@@ -48,12 +48,12 @@ function updateRow() {
 				});
 		var indId = mini.get('indTree').getValue();
 		var data = mini.encode(rowData);
-		var json = '{"rdIndBr":' + data + ',"indId":"' + indId + '"}';
 		$.ajax({
-					url : base + "dy/indbr/insertOrUpdateDyIndBr.nut",
-					data : json,
+					url : base + "dy/indbr/insertOrUpdateDyIndBr.nut?indId="+indId,
+					data : data,
 					type : "post",
 					dataType : "json",
+            		contentType : "application/json",
 					success : function(text) {
 						if (text) {
 							rdindbrGrid.reload();
