@@ -73,21 +73,21 @@
     </dependencies>
 
     <!--Maven插件-->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-        <resources>
-            <resource>
-                <directory>lib/</directory>
-                <targetPath>WEB-INF/lib</targetPath>
-                <includes>
-                    <include>**/*.jar</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--<directory>lib/</directory>-->
+                <!--<targetPath>WEB-INF/lib</targetPath>-->
+                <!--<includes>-->
+                    <!--<include>**/*.jar</include>-->
+                <!--</includes>-->
+            <!--</resource>-->
+        <!--</resources>-->
+    <!--</build>-->
 </project>

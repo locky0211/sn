@@ -60,6 +60,9 @@ nutz:
       paths:
         - sqls  #sql文件存放位置
 
+#logging:
+#  config: classpath:log4j-spring.xml
+
 mine:
   properties:
     updateEnabled: false

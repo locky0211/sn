@@ -2,16 +2,23 @@ package com.efraiser.test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Author xslde
- * @Description
- * @Date 2018/7/20 14:45
+ * 这是一个springboot启动类
  */
 @SpringBootApplication //表明这是一个springboot启动类
-public class SpringbootExample {
+public class SpringbootExample
+        extends SpringBootServletInitializer
+{
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SpringbootExample.class);
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootExample.class,args);
