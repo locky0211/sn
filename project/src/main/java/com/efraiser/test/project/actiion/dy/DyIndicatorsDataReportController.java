@@ -2,10 +2,7 @@ package com.efraiser.test.project.actiion.dy;
 
 import com.alibaba.fastjson.JSONArray;
 import com.efraiser.test.common.config.LocalConfig;
-import com.efraiser.test.common.util.DateUtil;
-import com.efraiser.test.common.util.ExcelUtil;
-import com.efraiser.test.common.util.RequestResult;
-import com.efraiser.test.common.util.StrUtil;
+import com.efraiser.test.common.util.*;
 import com.efraiser.test.common.util.nutz.R;
 import com.efraiser.test.db.model.dy.DyIndicatorsBasicInfo;
 import com.efraiser.test.db.model.dy.DyIndicatorsData;
@@ -265,14 +262,8 @@ public class DyIndicatorsDataReportController extends BaseController {
 				}
 				startRow++;
 			}
-			String fsPathStr = localConfig.getProperties().getTempStringPath() + File.separator + "dy" + File.separator + "inds" + File.separator + R.UU16();
-			File ffsPathFile = new File(fsPathStr);
-			if(!ffsPathFile.exists()){
-				ffsPathFile.mkdirs();
-			}
-			fsPathStr += ".xls";
 
-			File fs = new File(fsPathStr);
+			File fs = FileUtil.createFile(localConfig.getProperties().getTempStringPath() + File.separator + "dy" + File.separator + "inds" + File.separator + R.UU16()+".xls");
 			FileOutputStream out = new FileOutputStream(fs);
 			wb.write(out);
 			out.close();
@@ -500,16 +491,8 @@ public class DyIndicatorsDataReportController extends BaseController {
 				startRow++;
 			}
 
+			File fs = FileUtil.createFile(localConfig.getProperties().getTempStringPath() +  File.separator + "dy" + File.separator + "inds" + File.separator +  R.UU16()+".xls");
 
-
-			String fsPathStr = localConfig.getProperties().getTempStringPath() +  File.separator + "dy" + File.separator + "inds" + File.separator + R.UU16();
-			File ffsPathFile = new File(fsPathStr);
-			if(!ffsPathFile.exists()){
-				ffsPathFile.mkdirs();
-			}
-			fsPathStr += ".xls";
-
-			File fs = new File(fsPathStr);
 			FileOutputStream out = new FileOutputStream(fs);
 			wb.write(out);
 			out.close();

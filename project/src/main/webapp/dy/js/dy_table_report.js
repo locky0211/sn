@@ -160,6 +160,7 @@ function doSaveReportDate() {
 					url : url,
 					type : 'post',
 					dataType : 'json',
+					contentType : "application/json",
 					cache : false,
 					data : $("#rdTableReportForm").serialize(),
 					success : function(text) {
