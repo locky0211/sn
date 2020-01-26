@@ -61,15 +61,11 @@ nutz:
         - sqls  #sql文件存放位置
 
 logging:
-  config: classpath:log4j-spring.xml
+  config: classpath:log4j2.xml #此处名字只能用log4j2.xml不然达成war包，在tomcat运行识别不到
   level:
       org.nutz.dao: debug
 
 
-#logging:
-#  config: classpath:logback-spring.xml
-#  level:
-#    org.nutz.dao: debug
 
 mine:
   properties:
