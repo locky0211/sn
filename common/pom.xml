@@ -16,12 +16,26 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+
+            <exclusions>
+                <exclusion>
+                    <!-- 使用log4j2 去掉springboot默认日志，去掉springboot默认配置 -->
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
+        <!-- log4j-over-slf4j取代log4j，这样log4j接口输出的日志就会通过log4j-over-slf4j路由到SLF4J上，这样即使系统（包含使用的第三方jar库，比如dubbo）都可以将日志最终路由到SLF4J上，进而集中输出 -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <artifactId>log4j-over-slf4j</artifactId>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-api</artifactId>-->
+        <!--</dependency>-->
 
 
         <dependency>
@@ -67,27 +81,6 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/java-unrar-0.3.jar</systemPath>
         </dependency>
-
-
-
     </dependencies>
 
-    <!--Maven插件-->
-    <!--<build>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
-        <!--<resources>-->
-            <!--<resource>-->
-                <!--<directory>lib/</directory>-->
-                <!--<targetPath>WEB-INF/lib</targetPath>-->
-                <!--<includes>-->
-                    <!--<include>**/*.jar</include>-->
-                <!--</includes>-->
-            <!--</resource>-->
-        <!--</resources>-->
-    <!--</build>-->
 </project>

@@ -1,6 +1,5 @@
 package com.efraiser.test.project.actiion.dy;
 
-import ch.qos.logback.classic.Logger;
 import com.alibaba.fastjson.JSONArray;
 import com.efraiser.test.common.constant.SystemConstants;
 import com.efraiser.test.common.util.DateUtil;
@@ -33,6 +32,7 @@ import com.efraiser.test.db.util.DyTableUtil;
 import com.efraiser.test.project.actiion.BaseController;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.pager.Pager;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

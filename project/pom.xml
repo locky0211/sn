@@ -14,13 +14,11 @@
 
     <dependencies>
 
-
         <dependency>
             <groupId>efraiser_test</groupId>
             <artifactId>service_dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
 
         <dependency>
             <groupId>efraiser_test</groupId>
@@ -31,10 +29,29 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+
+            <exclusions>
+                <exclusion>
+                    <!-- 使用log4j2 去掉springboot默认日志，去掉springboot默认配置 -->
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency> <!-- 引入log4j2依赖 -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+
+        <!-- 添加jstl标签库依赖模块 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
         </dependency>
 
 
@@ -42,31 +59,22 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
-        <!-- 添加jstl标签库依赖模块 -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
+
         <!--添加tomcat依赖模块.-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
         <!-- 使用jsp引擎，springboot内置tomcat没有此依赖 -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
-        <dependency>
-            <groupId>efraiser_test</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0-SNAPSHOT</version>
 
-        </dependency>
 
     </dependencies>
 
@@ -123,15 +131,6 @@
                                 <include>**/*.jar</include>
                             </includes>
                         </resource>
-                        <!--<resource>-->
-                            <!--&lt;!&ndash; 指定resources插件处理哪个目录下的资源文件 &ndash;&gt;-->
-                            <!--<directory>src/main/webapp</directory>-->
-                            <!--&lt;!&ndash;注意此次必须要放在此目录下才能被访问到 &ndash;&gt;-->
-                            <!--<targetPath>META-INF/resources</targetPath>-->
-                            <!--<includes>-->
-                                <!--<include>**/*.*</include>-->
-                            <!--</includes>-->
-                        <!--</resource>-->
                     </webResources>
                 </configuration>
             </plugin>

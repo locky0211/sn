@@ -1,6 +1,5 @@
 package com.efraiser.test.db.service.dy.dyindicatordata.impl;
 
-import ch.qos.logback.classic.Logger;
 import com.alibaba.fastjson.JSONObject;
 import com.efraiser.test.common.constant.DyTableConstants;
 import com.efraiser.test.common.util.CommUtil;
@@ -27,6 +26,7 @@ import com.efraiser.test.db.util.DyTableUtil;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Sqls;
 import org.nutz.dao.sql.Sql;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

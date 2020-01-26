@@ -60,8 +60,16 @@ nutz:
       paths:
         - sqls  #sql文件存放位置
 
+logging:
+  config: classpath:log4j-spring.xml
+  level:
+      org.nutz.dao: debug
+
+
 #logging:
-#  config: classpath:log4j-spring.xml
+#  config: classpath:logback-spring.xml
+#  level:
+#    org.nutz.dao: debug
 
 mine:
   properties:
