@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class RdTableInfoServiceImpl extends BaseServiceImpl<RdTableInfo> implements RdTableInfoService<RdTableInfo> {
+public class RdTableInfoServiceImpl extends BaseServiceImpl<RdTableInfo> implements RdTableInfoService {
 
     @Autowired
     private RdTableModelService rdTableModelService;

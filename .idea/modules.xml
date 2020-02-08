@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/efraiser_test.iml" filepath="$PROJECT_DIR$/efraiser_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/project/project.iml" filepath="$PROJECT_DIR$/project/project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scheduler/scheduler.iml" filepath="$PROJECT_DIR$/scheduler/scheduler.iml" />
       <module fileurl="file://$PROJECT_DIR$/service_dao/service_dao.iml" filepath="$PROJECT_DIR$/service_dao/service_dao.iml" />
     </modules>
   </component>

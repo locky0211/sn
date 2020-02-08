@@ -70,6 +70,17 @@ public class EastConUtil {
     @Autowired
     private CheckFormulaExpendService checkFormulaExpendService;
 
+
+    private static EastConUtil eastConUtil;
+
+    public EastConUtil(){
+        eastConUtil = this;
+    }
+
+    public static EastConUtil getInstance(){
+        return eastConUtil ;
+    }
+
     /**
      * 功能描述：根据数据库连接信息连接数据库，并返回一个改DataSource的NutDao
      *
@@ -422,7 +433,7 @@ public class EastConUtil {
 
     }
 
-    public void importResultToJYLS(List<Record> re, String tableName, String reportDate) {
+    private void importResultToJYLS(List<Record> re, String tableName, String reportDate) {
         CheckAllServiceImpl checkAllDao = (CheckAllServiceImpl) checkAllService;
         for (Record record : re) {
             String sqlStr = "insert into EDW." + tableName + " values(";

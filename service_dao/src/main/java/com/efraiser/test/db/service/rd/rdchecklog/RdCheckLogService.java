@@ -7,7 +7,7 @@ import com.efraiser.test.db.service.BaseService;
 
 import java.util.List;
 
-public interface RdCheckLogService <T> extends BaseService {
+public interface RdCheckLogService extends BaseService {
 
     void saveRdCheckLog(String organNo, String reportDate, String tabType, String cUserName);
 

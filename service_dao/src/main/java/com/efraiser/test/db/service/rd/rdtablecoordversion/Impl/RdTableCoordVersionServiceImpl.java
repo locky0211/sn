@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class RdTableCoordVersionServiceImpl extends BaseServiceImpl<RdTableCoordVersion> implements RdTableCoordVersionService<RdTableCoordVersion> {
+public class RdTableCoordVersionServiceImpl extends BaseServiceImpl<RdTableCoordVersion> implements RdTableCoordVersionService {
 
     @Override
     public void deleteRdTableCoordVersion(String id) {

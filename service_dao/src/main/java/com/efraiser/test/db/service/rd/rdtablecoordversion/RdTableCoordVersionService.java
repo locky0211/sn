@@ -6,7 +6,7 @@ import com.efraiser.test.db.service.BaseService;
 import java.util.List;
 import java.util.Map;
 
-public interface RdTableCoordVersionService<T> extends BaseService {
+public interface RdTableCoordVersionService extends BaseService {
 
 
     void deleteRdTableCoordVersion(String id);

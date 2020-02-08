@@ -7,7 +7,7 @@ import com.efraiser.test.db.service.BaseService;
 import java.util.List;
 import java.util.Map;
 
-public interface RdTableInfoService<T> extends BaseService {
+public interface RdTableInfoService extends BaseService {
 
 
     RdTableInfo getRdTableInfo(String tabCode, String versionNo);

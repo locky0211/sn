@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Service
-public class RdTableModelPCTServiceImpl extends BaseServiceImpl<RdTableModelPCT> implements RdTableModelPCTService<RdTableModelPCT> {
+public class RdTableModelPCTServiceImpl extends BaseServiceImpl<RdTableModelPCT> implements RdTableModelPCTService {
 
 
     @Override

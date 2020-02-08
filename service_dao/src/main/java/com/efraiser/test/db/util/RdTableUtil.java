@@ -7,6 +7,7 @@ import com.efraiser.test.common.util.DateUtil;
 import com.efraiser.test.common.util.StrUtil;
 import com.efraiser.test.db.model.rd.RdTableInfo;
 import com.efraiser.test.db.model.rd.RdTableModel;
+import com.efraiser.test.db.service.rd.rdreportinfo.RdReportInfoService;
 import com.efraiser.test.db.service.rd.rdtableinfo.RdTableInfoService;
 import com.efraiser.test.db.service.rd.rdtablemodel.RdTableModelService;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -36,6 +37,9 @@ public class RdTableUtil {
 
     @Autowired
     private RdTableModelService rdTableModelService;
+
+    @Autowired
+    private RdReportInfoService rdReportInfoService;
 
 
     /**
@@ -425,6 +429,25 @@ public class RdTableUtil {
         } else {
             return null;
         }
+    }
+
+    public  String delParentNode(String brNos) {
+        String brNo = "";
+        String brnos[] = brNos.split(",");
+        for (int i = 0; i < brnos.length; i++) {
+            int num = rdReportInfoService.CheckParent(brnos[i]);
+            if (num == 0) {
+                if (i == brnos.length - 1) {
+                    brNo += "" + brnos[i] + "";
+                } else {
+                    brNo += "" + brnos[i] + ",";
+                }
+            }
+
+        }
+
+        return brNo;
+
     }
 
 

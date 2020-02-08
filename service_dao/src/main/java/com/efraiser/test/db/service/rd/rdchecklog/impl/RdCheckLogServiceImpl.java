@@ -22,7 +22,7 @@ import java.util.List;
 
 
 @Service
-public class RdCheckLogServiceImpl extends BaseServiceImpl<RdCheckLog> implements RdCheckLogService<RdCheckLog> {
+public class RdCheckLogServiceImpl extends BaseServiceImpl<RdCheckLog> implements RdCheckLogService {
 
 	@Autowired
 	private SysGgzdService sysGgzdService;

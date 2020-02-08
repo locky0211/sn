@@ -5,7 +5,7 @@ import com.efraiser.test.db.service.BaseService;
 
 import java.util.List;
 
-public interface RdTableModelPCTService<T> extends BaseService {
+public interface RdTableModelPCTService extends BaseService {
 
 
     List<String> getRdTableModelPctList(String tableId);
