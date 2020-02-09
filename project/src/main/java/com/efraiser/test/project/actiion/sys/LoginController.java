@@ -245,7 +245,7 @@ public class LoginController extends BaseController {
 //    public View upGenKey(String genKey, HttpServletRequest req) {
 //        if (StrUtil.isNotNull(genKey) && Ckd.checkGenKey(genKey)) {
 //            try {
-//                sysUserDao.insertGenKey(genKey);
+//                sysUserService.insertGenKey(genKey);
 //            } catch (Exception e) {
 //                req.setAttribute("errorMsg", "授权码添加失败!!");
 //                return new JspView("/gen.jsp?pId=" + Ckd.getSystemKey());
@@ -312,7 +312,7 @@ public class LoginController extends BaseController {
 //
 //        String u = (String) session.getAttribute("ssoclientagent.email");
 //
-//        SysUser us = sysUserDao.getSysUser(u);
+//        SysUser us = sysUserService.getSysUser(u);
 //
 //        String userId = us.getUserId();
 //        SysUser lUser = new SysUser();
@@ -322,13 +322,13 @@ public class LoginController extends BaseController {
 //        lUser.setLastLoginDate(DateUtil.getNow("yyyy-MM-dd HH:mm:ss"));
 //        lUser.setLastLoginIP(IpUtil.getIpAddrByRequest(req));
 //        us.setLoginCount(loginCount);
-//        sysUserDao.rdTableInfoService().updateIgnoreNull(lUser);// 修改用户最后登录时间
+//        sysUserService.rdTableInfoService().updateIgnoreNull(lUser);// 修改用户最后登录时间
 //        sysUserLoginLogDao.saveUserLoginLog("登录本系统", us, req);// 添加登录记录
 //        req.getSession().setAttribute(SystemConstants.SESSION_USER, us);// session放入用户对象
 //        req.getSession().setAttribute(SystemConstants.SESSION_USER_ID, us.getUserId());// session放入用户编号
-//        req.getSession().setAttribute(SystemConstants.SESSION_USER_ROLE_ID, sysUserDao.getUserRolesById(userId));// session放入用户角色
-//        req.getSession().setAttribute(SystemConstants.SESSION_USER_ROLE_NAME, sysUserDao.getUserRoleNameById(userId));// session放入用户角色名称
-//        req.getSession().setAttribute(SystemConstants.SESSION_USER_ACCESS_KEYS, sysUserDao.getUserQxById(userId));// session放入用户权限id的集合
+//        req.getSession().setAttribute(SystemConstants.SESSION_USER_ROLE_ID, sysUserService.getUserRolesById(userId));// session放入用户角色
+//        req.getSession().setAttribute(SystemConstants.SESSION_USER_ROLE_NAME, sysUserService.getUserRoleNameById(userId));// session放入用户角色名称
+//        req.getSession().setAttribute(SystemConstants.SESSION_USER_ACCESS_KEYS, sysUserService.getUserQxById(userId));// session放入用户权限id的集合
 //        if (StrUtil.isNotNull(SystemBrNo)) {
 //            // req.getSession().setAttribute(SystemConstants.SystemBrNo,
 //            // SystemBrNo);//默认机构名
@@ -346,13 +346,13 @@ public class LoginController extends BaseController {
 //                    return list;
 //                }
 //            });
-//            sysUserDao.rdTableInfoService().execute(sqls);
+//            sysUserService.rdTableInfoService().execute(sqls);
 //            List<String> depids = sqls.getList(String.class);
 //            if (depids.contains(SystemBrNo)) {
 //                req.getSession().setAttribute(SystemConstants.SystemBrNo, SystemBrNo);
 //            } else {
 //                for (String depid : depids) {
-//                    List<SysBmgl> list = sysUserDao.rdTableInfoService().query(SysBmgl.class, Cnd.where("bm_code", "=", depid).and("count_flag", "=", "1"), null);
+//                    List<SysBmgl> list = sysUserService.rdTableInfoService().query(SysBmgl.class, Cnd.where("bm_code", "=", depid).and("count_flag", "=", "1"), null);
 //                    if (list.size() > 0) {
 //                        req.getSession().setAttribute(SystemConstants.brNo, depid);
 //                        req.getSession().setAttribute(SystemConstants.SystemBrNo, "");
@@ -376,10 +376,10 @@ public class LoginController extends BaseController {
 //                    return list;
 //                }
 //            });
-//            sysUserDao.rdTableInfoService().execute(sqls1);
+//            sysUserService.rdTableInfoService().execute(sqls1);
 //            List<String> depids = sqls1.getList(String.class);
 //            for (String depid : depids) {
-//                List<SysBmgl> list = sysUserDao.rdTableInfoService().query(SysBmgl.class, Cnd.where("bm_code", "=", depid).and("count_flag", "=", "1"), null);
+//                List<SysBmgl> list = sysUserService.rdTableInfoService().query(SysBmgl.class, Cnd.where("bm_code", "=", depid).and("count_flag", "=", "1"), null);
 //                if (list.size() > 0) {
 //                    req.getSession().setAttribute(SystemConstants.brNo, depid);
 //                    req.getSession().setAttribute(SystemConstants.SystemBrNo, "");
@@ -392,7 +392,7 @@ public class LoginController extends BaseController {
 //            String sqlStr = "SELECT * FROM JGY_RECORD WHERE LOGIN_MONTHS='" + DateUtil.getNow("yyyyMM") + "'";
 //            List<JgyRecord> jlist = jgyRecordDao.getListObjectBySql(sqlStr, JgyRecord.class);
 //            if (jlist.isEmpty()) {
-//                List<String> list = sysUserDao.findSysUserbyRole("2");
+//                List<String> list = sysUserService.findSysUserbyRole("2");
 //                for (String id : list) {
 //                    record = new JgyRecord(id, DateUtil.getNow("yyyyMM"), "0", "0", "0");
 //                    jgyRecordDao.rdTableInfoService().insert(record);

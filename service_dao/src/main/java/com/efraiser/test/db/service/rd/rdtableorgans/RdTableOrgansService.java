@@ -5,7 +5,7 @@ import com.efraiser.test.db.service.BaseService;
 
 import java.util.List;
 
-public interface RdTableOrgansService<T> extends BaseService {
+public interface RdTableOrgansService extends BaseService {
 
     void insertRdTableOrgas(String tableId, String rdTableOrgans) throws Exception;
 

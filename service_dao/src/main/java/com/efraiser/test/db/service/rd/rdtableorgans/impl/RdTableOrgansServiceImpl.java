@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class RdTableOrgansServiceImpl extends BaseServiceImpl<RdTableOrgans> implements RdTableOrgansService<RdTableOrgans> {
+public class RdTableOrgansServiceImpl extends BaseServiceImpl<RdTableOrgans> implements RdTableOrgansService {
 
 
     @Override

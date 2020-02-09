@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class RdTableColumnContrastServiceImpl extends BaseServiceImpl<RdTableColumnContrast> implements RdTableColumnContrastService<RdTableColumnContrast> {
+public class RdTableColumnContrastServiceImpl extends BaseServiceImpl<RdTableColumnContrast> implements RdTableColumnContrastService {
 
 
     @Override

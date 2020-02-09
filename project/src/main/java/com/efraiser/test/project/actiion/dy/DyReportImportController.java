@@ -97,7 +97,7 @@ public class DyReportImportController extends BaseController {
 
         DyReportInfo ri = dyReportInfoServiceImpl.fetch(id);
         DyTableInfo tableInfo = DyTableModelCache.getTableInfo(ri.getTableId());
-        // RdTableInfo tableInfo = rdTableInfoDao.fetch(ri.getTableId());
+        // RdTableInfo tableInfo = rdTableInfoService.fetch(ri.getTableId());
         String filePath = localConfig.getProperties().getRdTableExcelPath() + File.separator + ri.getBrNo() + File.separator + ri.getReportDate() + File.separator + tableInfo.getVersionNo() + File.separator + tableInfo.getTabName()
                 + ".xls";
 
@@ -303,7 +303,7 @@ public class DyReportImportController extends BaseController {
         tableInfo = getTableInfo(rbiList, excelFileName, excelFile, tableId, tableInfo);
         if (tableInfo != null) {
             matchNum++;
-            // RdTableInfo tableInfo = rdTableInfoDao.fetch(rbi.getTableId());
+            // RdTableInfo tableInfo = rdTableInfoService.fetch(rbi.getTableId());
             // RdTableInfo tableInfo =
             // RdTableModelCache.getRdTableInfo(rbi.getTableId());
             if (StrUtil.isNull(reportId)) {
@@ -337,7 +337,7 @@ public class DyReportImportController extends BaseController {
                 }
             } else {
                 // String versionNo =
-                // rdTableModelDao.getExcelFileVersionNo(tableInfo.getVersionNoInfo(),
+                // rdTableModelService.getExcelFileVersionNo(tableInfo.getVersionNoInfo(),
                 // excelFile);
 
                 // if (StrUtil.isNull(versionNo)) {
@@ -376,7 +376,7 @@ public class DyReportImportController extends BaseController {
         tableInfo = getTableInfo(rbiList, excelFileName, excelFile, tableId, tableInfo);
         if (tableInfo != null) {
             matchNum++;
-            // RdTableInfo tableInfo = rdTableInfoDao.fetch(rbi.getTableId());
+            // RdTableInfo tableInfo = rdTableInfoService.fetch(rbi.getTableId());
             // RdTableInfo tableInfo =
             // RdTableModelCache.getRdTableInfo(rbi.getTableId());
             if (StrUtil.isNull(reportId)) {
@@ -410,7 +410,7 @@ public class DyReportImportController extends BaseController {
                 }
             } else {
                 // String versionNo =
-                // rdTableModelDao.getExcelFileVersionNo(tableInfo.getVersionNoInfo(),
+                // rdTableModelService.getExcelFileVersionNo(tableInfo.getVersionNoInfo(),
                 // excelFile);
 
                 // if (StrUtil.isNull(versionNo)) {
@@ -460,7 +460,7 @@ public class DyReportImportController extends BaseController {
         tableInfo = getTableInfo(rbiList, excelFileName, excelFile, tableId, tableInfo);
         if (tableInfo != null) {
             matchNum++;
-            // RdTableInfo tableInfo = rdTableInfoDao.fetch(rbi.getTableId());
+            // RdTableInfo tableInfo = rdTableInfoService.fetch(rbi.getTableId());
             // RdTableInfo tableInfo =
             // RdTableModelCache.getRdTableInfo(rbi.getTableId());
             if (StrUtil.isNull(reportId)) {
@@ -494,7 +494,7 @@ public class DyReportImportController extends BaseController {
                 }
             } else {
                 // String versionNo =
-                // rdTableModelDao.getExcelFileVersionNo(tableInfo.getVersionNoInfo(),
+                // rdTableModelService.getExcelFileVersionNo(tableInfo.getVersionNoInfo(),
                 // excelFile);
 
                 // if (StrUtil.isNull(versionNo)) {
@@ -538,7 +538,7 @@ public class DyReportImportController extends BaseController {
     private DyTableInfo getTableInfo(List<DyTableImportHelper> rbiList, String excelFileName, File excelFile, String tableId, DyTableInfo tableInfo) {
         DyTableImportHelper rbi = null;
         if (StrUtil.isNotNull(tableId)) {
-            // tableInfo = rdTableInfoDao.fetch(tableId);
+            // tableInfo = rdTableInfoService.fetch(tableId);
             // 此处修改为缓存获取
             tableInfo = DyTableModelCache.getTableInfo(tableId);
         } else {

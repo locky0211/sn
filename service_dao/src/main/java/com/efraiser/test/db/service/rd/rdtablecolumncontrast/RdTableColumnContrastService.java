@@ -6,7 +6,7 @@ import com.efraiser.test.db.service.BaseService;
 import java.util.List;
 import java.util.Map;
 
-public interface RdTableColumnContrastService<T> extends BaseService {
+public interface RdTableColumnContrastService extends BaseService {
 
 
     List<Integer> getColNames(String tableId, Integer part, List<Integer> valueCols);

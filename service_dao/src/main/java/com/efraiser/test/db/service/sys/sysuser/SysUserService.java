@@ -6,7 +6,7 @@ import com.efraiser.test.db.service.BaseService;
 import java.util.List;
 import java.util.Map;
 
-public interface SysUserService<T> extends BaseService {
+public interface SysUserService extends BaseService {
 
 
     List<SysUser> getAll();

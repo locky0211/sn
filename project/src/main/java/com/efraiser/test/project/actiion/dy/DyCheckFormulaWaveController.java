@@ -124,7 +124,7 @@ public class DyCheckFormulaWaveController  extends BaseController {
 		modelAndView.setViewName(page);
 
 		//加密前版本
-		//return rdCheckFormulaDao.fetchToEditCheckFormula(id);
+		//return rdCheckFormulaService.fetchToEditCheckFormula(id);
 		DyCheckFormulaWave dyCheckFormula = dyCheckFormulaWaveService.fetchToEditCheckFormula(id);
 		if(dyCheckFormula.getCheckFormula().contains("em_")){
 			dyCheckFormula.setCheckFormula(FormulaEncrypt.getFormulaDecrypt(dyCheckFormula.getCheckFormula()));
@@ -554,7 +554,7 @@ public class DyCheckFormulaWaveController  extends BaseController {
 
 			DyCheckFormulaWaveServiceImpl dyCheckFormulaWaveServiceImpl = (DyCheckFormulaWaveServiceImpl)dyCheckFormulaWaveService;
 
-			//List<RdTableModel> tableModel = rdTableModelDao.getModel(tableIds[x]);//报表模板
+			//List<RdTableModel> tableModel = rdTableModelService.getModel(tableIds[x]);//报表模板
 			String[] rowS = tableInfo.getRowInfo().split(DyTableConstants.STR_RC_SPLIT);
 			String[] colS = tableInfo.getColInfo().split(DyTableConstants.STR_RC_SPLIT);
 

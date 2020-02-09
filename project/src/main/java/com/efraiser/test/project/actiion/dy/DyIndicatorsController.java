@@ -285,7 +285,7 @@ public class DyIndicatorsController extends BaseController {
     // // 获取本期所有表编号集合
     // //
     // //（临时问题待确定：是否存在需要上期、年底和去年同期的报表不在这些编号里？举例：S63表在2012年报表代码设定为S6300,2013年将该表升级为S63第一部分，报表代码设定为S6301。这样是否会有指标公式里存在取S6301去年同期值）
-    // List<String> rTabCodesAll = rdTableInfoDao.getTabCodeList(brNo,
+    // List<String> rTabCodesAll = rdTableInfoService.getTabCodeList(brNo,
     // reportDate, tabType, true, true);
     // if (rTabCodesAll.size() == 0) {
     // // 没有找到机构需要上报的报表编号集合

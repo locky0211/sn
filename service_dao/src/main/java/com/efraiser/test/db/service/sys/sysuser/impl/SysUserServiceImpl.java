@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysUserService<SysUser> {
+public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements SysUserService {
 
     private Logger logger = LoggerFactory.getLogger(SysUserServiceImpl.class);
 

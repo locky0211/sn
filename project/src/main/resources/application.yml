@@ -1,8 +1,8 @@
 server:
-  #设置程序启动端口号
+  #设置程序启动端口号(仅内置tomcat有效)
   port: 7000
   servlet:
-      context-path: /web
+      context-path: /web # 跟下面updateUrl参数服务名一直
 
 
 
@@ -69,7 +69,6 @@ logging:
 
 mine:
   properties:
-    updateEnabled: false
     loginImg1: images/login/top-39.gif
     loginImg2: url(images/login/bg_main_exam.gif) no-repeat
     mainImg: images/cbrc.png
@@ -83,6 +82,8 @@ mine:
     reportExcelTempletPath: D:\mineTool\ideahome\yxrt_project\com.efraiser.sam\project\WebContent\exceltemp #报表模板存放路径D:/xiangmu/exceltemp
     rdTableExcelPath: /Users/zhenweili/Downloads/sam/SAM_EXCEL_DIR/ #导入文件存放目录D:/SAM_SYS_FILE/SAM_EXCEL_DIR/
     pageEditFlag: 0 #是否启用页面修改功能(1开启)
+    updateUrl: http://127.0.0.1:8080/web
+    updateEnabled: false
 
 
 

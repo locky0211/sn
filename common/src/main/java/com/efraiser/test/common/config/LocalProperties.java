@@ -8,8 +8,6 @@ import java.util.Set;
 public class LocalProperties {
 
 
-    private String updateEnabled;
-
     private String loginImg1;
 
     private String loginImg2;
@@ -34,6 +32,9 @@ public class LocalProperties {
     private String rdTableExcelPath;
 
     private String pageEditFlag;
+
+    private String updateUrl;
+    private String updateEnabled;
 
     //缓存配置
     private String cacheNameStr;
@@ -153,6 +154,23 @@ public class LocalProperties {
 
     public void setPageEditFlag(String pageEditFlag) {
         this.pageEditFlag = pageEditFlag;
+    }
+
+
+    public String getUpdateUrl() {
+        return updateUrl;
+    }
+
+    public void setUpdateUrl(String updateUrl) {
+        this.updateUrl = updateUrl;
+    }
+
+    public Set<String> getGetCacheNameSet() {
+        return getCacheNameSet;
+    }
+
+    public void setGetCacheNameSet(Set<String> getCacheNameSet) {
+        this.getCacheNameSet = getCacheNameSet;
     }
 
     /**

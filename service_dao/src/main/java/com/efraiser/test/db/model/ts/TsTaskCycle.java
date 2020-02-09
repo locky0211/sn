@@ -1,6 +1,7 @@
 package com.efraiser.test.db.model.ts;
 
 import com.efraiser.test.db.model.comom.BaseModelId;
+import com.efraiser.test.db.task.AbstractTaskBase;
 import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Table;
 
@@ -11,7 +12,7 @@ import org.nutz.dao.entity.annotation.Table;
  */
 @SuppressWarnings("serial")
 @Table("TS_TASK_CIRCLE")
-public class TsTaskCycle extends BaseModelId {
+public class TsTaskCycle extends BaseModelId  implements AbstractTaskBase {
 
 	@Column("RUN_EXPR")
 	private String runExpr;
@@ -34,4 +35,18 @@ public class TsTaskCycle extends BaseModelId {
 		this.cycleName = cycleName;
 	}
 
+	@Override
+	public String taskId() {
+		return getId();
+	}
+
+	@Override
+	public String cronExpression() {
+		return runExpr;
+	}
+
+	@Override
+	public String cycleName() {
+		return cycleName;
+	}
 }

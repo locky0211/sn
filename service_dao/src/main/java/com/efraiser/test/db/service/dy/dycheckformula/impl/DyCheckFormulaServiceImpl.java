@@ -697,8 +697,8 @@ public class DyCheckFormulaServiceImpl extends BaseServiceImpl<DyCheckFormula> i
             }
         }
 //加密前取数
-//		gqpr.setTotal(rdCheckFormulaDao.count(criteria));
-//		gqpr.setData(rdCheckFormulaDao.query(criteria, pager));
+//		gqpr.setTotal(rdCheckFormulaService.count(criteria));
+//		gqpr.setData(rdCheckFormulaService.query(criteria, pager));
 
         List<DyCheckFormula> list = query(criteria, null);
         for (int i = 0; i < list.size(); i++) {
@@ -760,8 +760,8 @@ public class DyCheckFormulaServiceImpl extends BaseServiceImpl<DyCheckFormula> i
             }
         }
         //加密前取数据
-        //gqpr.setTotal(rdCheckFormulaDao.count(criteria));
-        //gqpr.setData(rdCheckFormulaDao.query(criteria, pager));
+        //gqpr.setTotal(rdCheckFormulaService.count(criteria));
+        //gqpr.setData(rdCheckFormulaService.query(criteria, pager));
         List<DyCheckFormula> list = query(criteria, null);
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getCheckFormula().contains("em_")) {
