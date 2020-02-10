@@ -79,7 +79,7 @@ mine:
     ef: true
     cacheNameStr:     #模块使用缓存(跟CACHE_INFO表对应) eg：sysBmglCache,sysGgzdCache
     tempStringPath: d:/upload/  #系统临时目录
-    reportExcelTempletPath: D:\mineTool\ideahome\yxrt_project\com.efraiser.sam\project\WebContent\exceltemp #报表模板存放路径D:/xiangmu/exceltemp
+    reportExcelTempletPath: D:\mineTool\ideahome\yxrt_project\sn\sn\project\src\main\webapp\exceltemp #报表模板存放路径D:/xiangmu/exceltemp
     rdTableExcelPath: /Users/zhenweili/Downloads/sam/SAM_EXCEL_DIR/ #导入文件存放目录D:/SAM_SYS_FILE/SAM_EXCEL_DIR/
     pageEditFlag: 0 #是否启用页面修改功能(1开启)
     updateUrl: http://127.0.0.1:8080/web
