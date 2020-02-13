@@ -58,11 +58,35 @@
 				</tr>
 				<tr>
 					<td>报表行信息：</td>
-					<td><input id="rowInfo" name="rowInfo" class="mini-textbox" style="width: 360px;" required="true" value="${tInfo.rowInfo}" /></td>
+					<td>
+						<input id="rowInfo" name="rowInfo" class="mini-hidden" style="width: 360px;" required="true" value="${tInfo.rowInfo}" />
+						<table id=tableRow>
+							<tr  class="tableRow_tr">
+								<td>行数：<input name="allRow"  class="mini-textbox"  style="width: 36px;" required="true" value=""  vtype="int"/></td>
+								<td>数据行：<input name="dataRow" class="mini-textbox" style="width: 36px;" required="true" value="" vtype="int"/></td>
+								<td>取数行：<input  name="getDataRow" class="mini-textbox" style="width: 36px;" required="true" value="" vtype="int"/></td>
+								<td><input type="button" value="+" style="width: 30px;" onclick="addTableRow();" /></td>
+								<td><input type="button" value="-" style="width: 30px;" onclick="delTableRow(this);" /></td>
+							</tr>
+						</table>
+					</td>
 				</tr>
 				<tr>
 					<td>报表列信息：</td>
-					<td><input id="colInfo" name="colInfo" class="mini-textbox" style="width: 360px;" required="true" value="${tInfo.colInfo}" /></td>
+					<td>
+						<input id="colInfo" name="colInfo" class="mini-hidden"  style="width: 360px;" required="true" value="${tInfo.colInfo}" />
+
+						<table id=tableCol>
+							<tr  class="tableCol_tr">
+								<td>列数：<input name="allCol"  class="mini-textbox"  style="width: 36px;" required="true" value=""  vtype="int"/></td>
+								<td>取数列：<input name="getDataCol" class="mini-textbox" style="width: 36px;" required="true" value="" vtype="int"/></td>
+								<td>参数列：<input name="paramCol" class="mini-textbox" style="width: 90px;" required="true" value="" emptyText= "多列逗号','分割"/></td>
+								<td><input type="button" value="+" style="width: 30px;" onclick="addTableCol();" /></td>
+								<td><input type="button" value="-" style="width: 30px;" onclick="delTableCol(this);" /></td>
+							</tr>
+						</table>
+
+					</td>
 				</tr>
 				<tr>
 					<td>匹配关键字：</td>

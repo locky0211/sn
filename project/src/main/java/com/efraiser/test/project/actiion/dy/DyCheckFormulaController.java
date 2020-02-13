@@ -172,7 +172,7 @@ public class DyCheckFormulaController extends BaseController {
             cUser = sysUser.getUserId();
         }
 
-        return dyCheckFormulaService.getDyCheckFormulaListArea(checkArea, cUser, tabcode, checkFormula, vFlag, formulaType, pageIndex, pageSize, sortField, sortOrder);
+        return dyCheckFormulaService.getDyCheckFormulaListArea(cUser,  checkArea,  tabcode,  checkFormula,  vFlag,  formulaType,  pageIndex,  pageSize,  sortField,  sortOrder);
 
     }
 
