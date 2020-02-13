@@ -85,7 +85,10 @@ public class EastCheckSetup {
 	}
 
 	public void destroy() {
-		timer.cancel();
+		if(timer != null){
+			timer.cancel();
+		}
+
 	}
 
 }

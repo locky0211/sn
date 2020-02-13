@@ -122,9 +122,9 @@ public abstract class AbstractSchedulerManagerBase {
      */
     public void shutdown() throws SchedulerException {
         Scheduler scheduler = schedulerFactory.getScheduler();
-        if (scheduler.isStarted()) {
+        //if (scheduler.isStarted()) {
             scheduler.shutdown();
-        }
+       // }
         log.info("调度器停止运行");
     }
 

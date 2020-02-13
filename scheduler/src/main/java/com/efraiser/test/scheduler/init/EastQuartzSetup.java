@@ -42,8 +42,7 @@ public class EastQuartzSetup {
         try {
             EastSchedulerManager.getInstance().shutdown();
         } catch (SchedulerException e) {
-            logger.error("停止任务调度异常....");
-            e.printStackTrace();
+            logger.error("停止任务调度异常....",e);
         }
     }
 

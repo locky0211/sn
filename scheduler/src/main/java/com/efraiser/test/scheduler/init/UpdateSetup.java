@@ -83,7 +83,10 @@ public class UpdateSetup {
     }
 
     public void destroy() {
-        timer.cancel();
+        if(timer != null){
+            timer.cancel();
+        }
+
     }
 
 }
